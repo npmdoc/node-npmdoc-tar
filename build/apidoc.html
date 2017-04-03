@@ -1,0 +1,6099 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/isaacs/node-tar#readme"
+
+    >tar (v2.2.1)</a>
+</h1>
+<h4>tar for node</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.tar">module tar</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Extract">
+            function <span class="apidocSignatureSpan">tar.</span>Extract
+            <span class="apidocSignatureSpan">(opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Pack">
+            function <span class="apidocSignatureSpan">tar.</span>Pack
+            <span class="apidocSignatureSpan">(props)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Parse">
+            function <span class="apidocSignatureSpan">tar.</span>Parse
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Parse.super_">
+            function <span class="apidocSignatureSpan">tar.</span>Parse.super_
+            <span class="apidocSignatureSpan">(props, currentStat)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.buffer_entry">
+            function <span class="apidocSignatureSpan">tar.</span>buffer_entry
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.entry">
+            function <span class="apidocSignatureSpan">tar.</span>entry
+            <span class="apidocSignatureSpan">(header, extended, global)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.entry_writer">
+            function <span class="apidocSignatureSpan">tar.</span>entry_writer
+            <span class="apidocSignatureSpan">(props)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.extended_header">
+            function <span class="apidocSignatureSpan">tar.</span>extended_header
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.extended_header_writer">
+            function <span class="apidocSignatureSpan">tar.</span>extended_header_writer
+            <span class="apidocSignatureSpan">(props)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.global_header_writer">
+            function <span class="apidocSignatureSpan">tar.</span>global_header_writer
+            <span class="apidocSignatureSpan">(props)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.header">
+            function <span class="apidocSignatureSpan">tar.</span>header
+            <span class="apidocSignatureSpan">(block)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">number <span class="apidocSignatureSpan">tar.</span>blockSize</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">number <span class="apidocSignatureSpan">tar.</span>headerSize</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">tar.</span>Extract.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">tar.</span>Pack.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">tar.</span>Parse.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">tar.</span>Parse.super_.Dir.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">tar.</span>Parse.super_.File.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">tar.</span>Parse.super_.Link.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">tar.</span>Parse.super_.Proxy.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">tar.</span>Parse.super_.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">tar.</span>Parse.super_.super_.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">tar.</span>buffer_entry.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">tar.</span>entry.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">tar.</span>entry_writer.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">tar.</span>extended_header.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">tar.</span>extended_header_writer.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">tar.</span>fieldEnds</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">tar.</span>fieldOffs</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">tar.</span>fieldSize</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">tar.</span>fields</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">tar.</span>header.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">tar.</span>knownExtended</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">tar.</span>modes</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">tar.</span>numeric</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">tar.</span>types</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.tar.Extract">module tar.Extract</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Extract.Extract">
+            function <span class="apidocSignatureSpan">tar.</span>Extract
+            <span class="apidocSignatureSpan">(opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Extract.super_">
+            function <span class="apidocSignatureSpan">tar.Extract.</span>super_
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.tar.Extract.prototype">module tar.Extract.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Extract.prototype._streamEnd">
+            function <span class="apidocSignatureSpan">tar.Extract.prototype.</span>_streamEnd
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.tar.Pack">module tar.Pack</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Pack.Pack">
+            function <span class="apidocSignatureSpan">tar.</span>Pack
+            <span class="apidocSignatureSpan">(props)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Pack.super_">
+            function <span class="apidocSignatureSpan">tar.Pack.</span>super_
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.tar.Pack.prototype">module tar.Pack.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Pack.prototype._process">
+            function <span class="apidocSignatureSpan">tar.Pack.prototype.</span>_process
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Pack.prototype.add">
+            function <span class="apidocSignatureSpan">tar.Pack.prototype.</span>add
+            <span class="apidocSignatureSpan">(stream)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Pack.prototype.addGlobal">
+            function <span class="apidocSignatureSpan">tar.Pack.prototype.</span>addGlobal
+            <span class="apidocSignatureSpan">(props)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Pack.prototype.destroy">
+            function <span class="apidocSignatureSpan">tar.Pack.prototype.</span>destroy
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Pack.prototype.end">
+            function <span class="apidocSignatureSpan">tar.Pack.prototype.</span>end
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Pack.prototype.pause">
+            function <span class="apidocSignatureSpan">tar.Pack.prototype.</span>pause
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Pack.prototype.resume">
+            function <span class="apidocSignatureSpan">tar.Pack.prototype.</span>resume
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Pack.prototype.write">
+            function <span class="apidocSignatureSpan">tar.Pack.prototype.</span>write
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.tar.Parse">module tar.Parse</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Parse.Parse">
+            function <span class="apidocSignatureSpan">tar.</span>Parse
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Parse.create">
+            function <span class="apidocSignatureSpan">tar.Parse.</span>create
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Parse.super_">
+            function <span class="apidocSignatureSpan">tar.Parse.</span>super_
+            <span class="apidocSignatureSpan">(props, currentStat)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.tar.Parse.prototype">module tar.Parse.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Parse.prototype._process">
+            function <span class="apidocSignatureSpan">tar.Parse.prototype.</span>_process
+            <span class="apidocSignatureSpan">(c)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Parse.prototype._read">
+            function <span class="apidocSignatureSpan">tar.Parse.prototype.</span>_read
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Parse.prototype._startEntry">
+            function <span class="apidocSignatureSpan">tar.Parse.prototype.</span>_startEntry
+            <span class="apidocSignatureSpan">(c)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Parse.prototype._streamEnd">
+            function <span class="apidocSignatureSpan">tar.Parse.prototype.</span>_streamEnd
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Parse.prototype.end">
+            function <span class="apidocSignatureSpan">tar.Parse.prototype.</span>end
+            <span class="apidocSignatureSpan">(c)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Parse.prototype.write">
+            function <span class="apidocSignatureSpan">tar.Parse.prototype.</span>write
+            <span class="apidocSignatureSpan">(c)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.tar.Parse.super_">module tar.Parse.super_</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Parse.super_.super_">
+            function <span class="apidocSignatureSpan">tar.Parse.</span>super_
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Parse.super_.Dir">
+            function <span class="apidocSignatureSpan">tar.Parse.super_.</span>Dir
+            <span class="apidocSignatureSpan">(props)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Parse.super_.File">
+            function <span class="apidocSignatureSpan">tar.Parse.super_.</span>File
+            <span class="apidocSignatureSpan">(props)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Parse.super_.Link">
+            function <span class="apidocSignatureSpan">tar.Parse.super_.</span>Link
+            <span class="apidocSignatureSpan">(props)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Parse.super_.Proxy">
+            function <span class="apidocSignatureSpan">tar.Parse.super_.</span>Proxy
+            <span class="apidocSignatureSpan">(props)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">tar.Parse.super_.</span>hardLinks</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.tar.Parse.super_.Dir.prototype">module tar.Parse.super_.Dir.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Parse.super_.Dir.prototype._getEntries">
+            function <span class="apidocSignatureSpan">tar.Parse.super_.Dir.prototype.</span>_getEntries
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Parse.super_.Dir.prototype._read">
+            function <span class="apidocSignatureSpan">tar.Parse.super_.Dir.prototype.</span>_read
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Parse.super_.Dir.prototype.disown">
+            function <span class="apidocSignatureSpan">tar.Parse.super_.Dir.prototype.</span>disown
+            <span class="apidocSignatureSpan">(entry)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Parse.super_.Dir.prototype.emitEntry">
+            function <span class="apidocSignatureSpan">tar.Parse.super_.Dir.prototype.</span>emitEntry
+            <span class="apidocSignatureSpan">(entry)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Parse.super_.Dir.prototype.getChildProps">
+            function <span class="apidocSignatureSpan">tar.Parse.super_.Dir.prototype.</span>getChildProps
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Parse.super_.Dir.prototype.pause">
+            function <span class="apidocSignatureSpan">tar.Parse.super_.Dir.prototype.</span>pause
+            <span class="apidocSignatureSpan">(who)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Parse.super_.Dir.prototype.resume">
+            function <span class="apidocSignatureSpan">tar.Parse.super_.Dir.prototype.</span>resume
+            <span class="apidocSignatureSpan">(who)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.tar.Parse.super_.File.prototype">module tar.Parse.super_.File.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Parse.super_.File.prototype._getStream">
+            function <span class="apidocSignatureSpan">tar.Parse.super_.File.prototype.</span>_getStream
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Parse.super_.File.prototype._read">
+            function <span class="apidocSignatureSpan">tar.Parse.super_.File.prototype.</span>_read
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Parse.super_.File.prototype.pause">
+            function <span class="apidocSignatureSpan">tar.Parse.super_.File.prototype.</span>pause
+            <span class="apidocSignatureSpan">(who)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Parse.super_.File.prototype.resume">
+            function <span class="apidocSignatureSpan">tar.Parse.super_.File.prototype.</span>resume
+            <span class="apidocSignatureSpan">(who)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.tar.Parse.super_.Link.prototype">module tar.Parse.super_.Link.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Parse.super_.Link.prototype._read">
+            function <span class="apidocSignatureSpan">tar.Parse.super_.Link.prototype.</span>_read
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Parse.super_.Link.prototype._stat">
+            function <span class="apidocSignatureSpan">tar.Parse.super_.Link.prototype.</span>_stat
+            <span class="apidocSignatureSpan">(currentStat)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.tar.Parse.super_.Proxy.prototype">module tar.Parse.super_.Proxy.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Parse.super_.Proxy.prototype._addProxy">
+            function <span class="apidocSignatureSpan">tar.Parse.super_.Proxy.prototype.</span>_addProxy
+            <span class="apidocSignatureSpan">(proxy)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Parse.super_.Proxy.prototype._stat">
+            function <span class="apidocSignatureSpan">tar.Parse.super_.Proxy.prototype.</span>_stat
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Parse.super_.Proxy.prototype.pause">
+            function <span class="apidocSignatureSpan">tar.Parse.super_.Proxy.prototype.</span>pause
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Parse.super_.Proxy.prototype.resume">
+            function <span class="apidocSignatureSpan">tar.Parse.super_.Proxy.prototype.</span>resume
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.tar.Parse.super_.prototype">module tar.Parse.super_.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Parse.super_.prototype._read">
+            function <span class="apidocSignatureSpan">tar.Parse.super_.prototype.</span>_read
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Parse.super_.prototype._stat">
+            function <span class="apidocSignatureSpan">tar.Parse.super_.prototype.</span>_stat
+            <span class="apidocSignatureSpan">(currentStat)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Parse.super_.prototype.pause">
+            function <span class="apidocSignatureSpan">tar.Parse.super_.prototype.</span>pause
+            <span class="apidocSignatureSpan">(who)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Parse.super_.prototype.pipe">
+            function <span class="apidocSignatureSpan">tar.Parse.super_.prototype.</span>pipe
+            <span class="apidocSignatureSpan">(dest)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Parse.super_.prototype.resume">
+            function <span class="apidocSignatureSpan">tar.Parse.super_.prototype.</span>resume
+            <span class="apidocSignatureSpan">(who)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.tar.Parse.super_.super_.prototype">module tar.Parse.super_.super_.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Parse.super_.super_.prototype.abort">
+            function <span class="apidocSignatureSpan">tar.Parse.super_.super_.prototype.</span>abort
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Parse.super_.super_.prototype.destroy">
+            function <span class="apidocSignatureSpan">tar.Parse.super_.super_.prototype.</span>destroy
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Parse.super_.super_.prototype.error">
+            function <span class="apidocSignatureSpan">tar.Parse.super_.super_.prototype.</span>error
+            <span class="apidocSignatureSpan">(msg, code, th)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Parse.super_.super_.prototype.info">
+            function <span class="apidocSignatureSpan">tar.Parse.super_.super_.prototype.</span>info
+            <span class="apidocSignatureSpan">(msg, code)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Parse.super_.super_.prototype.on">
+            function <span class="apidocSignatureSpan">tar.Parse.super_.super_.prototype.</span>on
+            <span class="apidocSignatureSpan">(ev, fn)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.Parse.super_.super_.prototype.warn">
+            function <span class="apidocSignatureSpan">tar.Parse.super_.super_.prototype.</span>warn
+            <span class="apidocSignatureSpan">(msg, code)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.tar.buffer_entry">module tar.buffer_entry</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.buffer_entry.buffer_entry">
+            function <span class="apidocSignatureSpan">tar.</span>buffer_entry
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.buffer_entry.super_">
+            function <span class="apidocSignatureSpan">tar.buffer_entry.</span>super_
+            <span class="apidocSignatureSpan">(header, extended, global)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.tar.buffer_entry.prototype">module tar.buffer_entry.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.buffer_entry.prototype.write">
+            function <span class="apidocSignatureSpan">tar.buffer_entry.prototype.</span>write
+            <span class="apidocSignatureSpan">(c)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.tar.entry">module tar.entry</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.entry.entry">
+            function <span class="apidocSignatureSpan">tar.</span>entry
+            <span class="apidocSignatureSpan">(header, extended, global)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.entry.super_">
+            function <span class="apidocSignatureSpan">tar.entry.</span>super_
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.tar.entry.prototype">module tar.entry.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.entry.prototype._read">
+            function <span class="apidocSignatureSpan">tar.entry.prototype.</span>_read
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.entry.prototype._setProps">
+            function <span class="apidocSignatureSpan">tar.entry.prototype.</span>_setProps
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.entry.prototype.abort">
+            function <span class="apidocSignatureSpan">tar.entry.prototype.</span>abort
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.entry.prototype.end">
+            function <span class="apidocSignatureSpan">tar.entry.prototype.</span>end
+            <span class="apidocSignatureSpan">(c)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.entry.prototype.pause">
+            function <span class="apidocSignatureSpan">tar.entry.prototype.</span>pause
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.entry.prototype.resume">
+            function <span class="apidocSignatureSpan">tar.entry.prototype.</span>resume
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.entry.prototype.write">
+            function <span class="apidocSignatureSpan">tar.entry.prototype.</span>write
+            <span class="apidocSignatureSpan">(c)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.tar.entry_writer">module tar.entry_writer</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.entry_writer.entry_writer">
+            function <span class="apidocSignatureSpan">tar.</span>entry_writer
+            <span class="apidocSignatureSpan">(props)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.entry_writer.super_">
+            function <span class="apidocSignatureSpan">tar.entry_writer.</span>super_
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.tar.entry_writer.prototype">module tar.entry_writer.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.entry_writer.prototype._header">
+            function <span class="apidocSignatureSpan">tar.entry_writer.prototype.</span>_header
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.entry_writer.prototype._process">
+            function <span class="apidocSignatureSpan">tar.entry_writer.prototype.</span>_process
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.entry_writer.prototype.add">
+            function <span class="apidocSignatureSpan">tar.entry_writer.prototype.</span>add
+            <span class="apidocSignatureSpan">(entry)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.entry_writer.prototype.destroy">
+            function <span class="apidocSignatureSpan">tar.entry_writer.prototype.</span>destroy
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.entry_writer.prototype.end">
+            function <span class="apidocSignatureSpan">tar.entry_writer.prototype.</span>end
+            <span class="apidocSignatureSpan">(c)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.entry_writer.prototype.pause">
+            function <span class="apidocSignatureSpan">tar.entry_writer.prototype.</span>pause
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.entry_writer.prototype.resume">
+            function <span class="apidocSignatureSpan">tar.entry_writer.prototype.</span>resume
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.entry_writer.prototype.write">
+            function <span class="apidocSignatureSpan">tar.entry_writer.prototype.</span>write
+            <span class="apidocSignatureSpan">(c)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.tar.extended_header">module tar.extended_header</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.extended_header.extended_header">
+            function <span class="apidocSignatureSpan">tar.</span>extended_header
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.extended_header.super_">
+            function <span class="apidocSignatureSpan">tar.extended_header.</span>super_
+            <span class="apidocSignatureSpan">(header, extended, global)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">tar.extended_header.</span>states</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.tar.extended_header.prototype">module tar.extended_header.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.extended_header.prototype._parse">
+            function <span class="apidocSignatureSpan">tar.extended_header.prototype.</span>_parse
+            <span class="apidocSignatureSpan">(c)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.tar.extended_header_writer">module tar.extended_header_writer</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.extended_header_writer.extended_header_writer">
+            function <span class="apidocSignatureSpan">tar.</span>extended_header_writer
+            <span class="apidocSignatureSpan">(props)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.extended_header_writer.super_">
+            function <span class="apidocSignatureSpan">tar.extended_header_writer.</span>super_
+            <span class="apidocSignatureSpan">(props)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.tar.extended_header_writer.prototype">module tar.extended_header_writer.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.extended_header_writer.prototype._encodeFields">
+            function <span class="apidocSignatureSpan">tar.extended_header_writer.prototype.</span>_encodeFields
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.extended_header_writer.prototype.end">
+            function <span class="apidocSignatureSpan">tar.extended_header_writer.prototype.</span>end
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.tar.global_header_writer">module tar.global_header_writer</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.global_header_writer.global_header_writer">
+            function <span class="apidocSignatureSpan">tar.</span>global_header_writer
+            <span class="apidocSignatureSpan">(props)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.global_header_writer.super_">
+            function <span class="apidocSignatureSpan">tar.global_header_writer.</span>super_
+            <span class="apidocSignatureSpan">(props)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.tar.header">module tar.header</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.header.header">
+            function <span class="apidocSignatureSpan">tar.</span>header
+            <span class="apidocSignatureSpan">(block)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.header.decode">
+            function <span class="apidocSignatureSpan">tar.header.</span>decode
+            <span class="apidocSignatureSpan">(block)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.header.encode">
+            function <span class="apidocSignatureSpan">tar.header.</span>encode
+            <span class="apidocSignatureSpan">(obj)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.header.parseNumeric">
+            function <span class="apidocSignatureSpan">tar.header.</span>parseNumeric
+            <span class="apidocSignatureSpan">(f)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.tar.header.prototype">module tar.header.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.header.prototype.calcSum">
+            function <span class="apidocSignatureSpan">tar.header.prototype.</span>calcSum
+            <span class="apidocSignatureSpan">(block)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.header.prototype.checkSum">
+            function <span class="apidocSignatureSpan">tar.header.prototype.</span>checkSum
+            <span class="apidocSignatureSpan">(block)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.header.prototype.decode">
+            function <span class="apidocSignatureSpan">tar.header.prototype.</span>decode
+            <span class="apidocSignatureSpan">(block)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.tar.header.prototype.encode">
+            function <span class="apidocSignatureSpan">tar.header.prototype.</span>encode
+            <span class="apidocSignatureSpan">(obj)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.tar" id="apidoc.module.tar">module tar</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Extract" id="apidoc.element.tar.Extract">
+        function <span class="apidocSignatureSpan">tar.</span>Extract
+        <span class="apidocSignatureSpan">(opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Extract(opts) {
+  if (!(this instanceof Extract)) return new Extract(opts)
+  tar.Parse.apply(this)
+
+  if (typeof opts !== &#x22;object&#x22;) {
+    opts = { path: opts }
+  }
+
+  // better to drop in cwd? seems more standard.
+  opts.path = opts.path || path.resolve(&#x22;node-tar-extract&#x22;)
+  opts.type = &#x22;Directory&#x22;
+  opts.Directory = true
+
+  // similar to --strip or --strip-components
+  opts.strip = +opts.strip
+  if (!opts.strip || opts.strip &#x3c;= 0) opts.strip = 0
+
+  this._fst = fstream.Writer(opts)
+
+  this.pause()
+  var me = this
+
+  // Hardlinks in tarballs are relative to the root
+  // of the tarball.  So, they need to be resolved against
+  // the target directory in order to be created properly.
+  me.on(&#x22;entry&#x22;, function (entry) {
+    // if there&#x27;s a &#x22;strip&#x22; argument, then strip off that many
+    // path components.
+    if (opts.strip) {
+      var p = entry.path.split(&#x22;/&#x22;).slice(opts.strip).join(&#x22;/&#x22;)
+      entry.path = entry.props.path = p
+      if (entry.linkpath) {
+        var lp = entry.linkpath.split(&#x22;/&#x22;).slice(opts.strip).join(&#x22;/&#x22;)
+        entry.linkpath = entry.props.linkpath = lp
+      }
+    }
+    if (entry.type === &#x22;Link&#x22;) {
+      entry.linkpath = entry.props.linkpath =
+        path.join(opts.path, path.join(&#x22;/&#x22;, entry.props.linkpath))
+    }
+
+    if (entry.type === &#x22;SymbolicLink&#x22;) {
+      var dn = path.dirname(entry.path) || &#x22;&#x22;
+      var linkpath = entry.props.linkpath
+      var target = path.resolve(opts.path, dn, linkpath)
+      if (target.indexOf(opts.path) !== 0) {
+        linkpath = path.join(opts.path, path.join(&#x22;/&#x22;, linkpath))
+      }
+      entry.linkpath = entry.props.linkpath = linkpath
+    }
+  })
+
+  this._fst.on(&#x22;ready&#x22;, function () {
+    me.pipe(me._fst, { end: false })
+    me.resume()
+  })
+
+  this._fst.on(&#x27;error&#x27;, function(err) {
+    me.emit(&#x27;error&#x27;, err)
+  })
+
+  this._fst.on(&#x27;drain&#x27;, function() {
+    me.emit(&#x27;drain&#x27;)
+  })
+
+  // this._fst.on(&#x22;end&#x22;, function () {
+  //   console.error(&#x22;\nEEEE Extract End&#x22;, me._fst.path)
+  // })
+
+  this._fst.on(&#x22;close&#x22;, function () {
+    // console.error(&#x22;\nEEEE Extract End&#x22;, me._fst.path)
+    me.emit(&#x22;finish&#x22;)
+    me.emit(&#x22;end&#x22;)
+    me.emit(&#x22;close&#x22;)
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+This only works with directories, it does not work with individual files.
+
+The optional `properties` object are used to set properties in the tar
+&#x27;Global Extended Header&#x27;. If the `fromBase` property is set to true,
+the tar will contain files relative to the path passed, and not with
+the path included.
+
+### tar.<span class="apidocCodeKeywordSpan">Extract</span>([options])
+
+Returns a through stream. Write tar data to the stream and the files
+in the tarball will be extracted onto the filesystem.
+
+`options` can be:
+
+```js
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Pack" id="apidoc.element.tar.Pack">
+        function <span class="apidocSignatureSpan">tar.</span>Pack
+        <span class="apidocSignatureSpan">(props)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Pack(props) {
+  // console.error(&#x22;-- p ctor&#x22;)
+  var me = this
+  if (!(me instanceof Pack)) return new Pack(props)
+
+  if (props) me._noProprietary = props.noProprietary
+  else me._noProprietary = false
+
+  me._global = props
+
+  me.readable = true
+  me.writable = true
+  me._buffer = []
+  // console.error(&#x22;-- -- set current to null in ctor&#x22;)
+  me._currentEntry = null
+  me._processing = false
+
+  me._pipeRoot = null
+  me.on(&#x22;pipe&#x22;, function (src) {
+    if (src.root === me._pipeRoot) return
+    me._pipeRoot = src
+    src.on(&#x22;end&#x22;, function () {
+      me._pipeRoot = null
+    })
+    me.add(src)
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+See `examples/` for usage examples.
+
+### var tar = require(&#x27;tar&#x27;)
+
+Returns an object with `.Pack`, `.Extract` and `.Parse` methods.
+
+### tar.<span class="apidocCodeKeywordSpan">Pack</span>([properties])
+
+Returns a through stream. Use
+[fstream](https://npmjs.org/package/fstream) to write files into the
+pack stream and you will receive tar archive data from the pack
+stream.
+
+This only works with directories, it does not work with individual files.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Parse" id="apidoc.element.tar.Parse">
+        function <span class="apidocSignatureSpan">tar.</span>Parse
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Parse() {
+  var me = this
+  if (!(me instanceof Parse)) return new Parse()
+
+  // doesn&#x27;t apply fstream.Reader ctor?
+  // no, becasue we don&#x27;t want to stat/etc, we just
+  // want to get the entry/add logic from .pipe()
+  Stream.apply(me)
+
+  me.writable = true
+  me.readable = true
+  me._stream = new BlockStream(512)
+  me.position = 0
+  me._ended = false
+
+  me._stream.on(&#x22;error&#x22;, function (e) {
+    me.emit(&#x22;error&#x22;, e)
+  })
+
+  me._stream.on(&#x22;data&#x22;, function (c) {
+    me._process(c)
+  })
+
+  me._stream.on(&#x22;end&#x22;, function () {
+    me._streamEnd()
+  })
+
+  me._stream.on(&#x22;drain&#x22;, function () {
+    me.emit(&#x22;drain&#x22;)
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  strip: 0, // how many path segments to strip from the root when extracting
+}
+```
+
+`options` also get passed to the `fstream.Writer` instance that `tar`
+uses internally.
+
+### tar.<span class="apidocCodeKeywordSpan">Parse</span>()
+
+Returns a writable stream. Write tar data to it and it will emit
+`entry` events for each entry parsed from the tarball. This is used by
+`tar.Extract`.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Parse.super_" id="apidoc.element.tar.Parse.super_">
+        function <span class="apidocSignatureSpan">tar.</span>Parse.super_
+        <span class="apidocSignatureSpan">(props, currentStat)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Reader(props, currentStat) {
+  var self = this
+  if (!(self instanceof Reader)) return new Reader(props, currentStat)
+
+  if (typeof props === &#x27;string&#x27;) {
+    props = { path: props }
+  }
+
+  // polymorphism.
+  // call fstream.Reader(dir) to get a DirReader object, etc.
+  // Note that, unlike in the Writer case, ProxyReader is going
+  // to be the *normal* state of affairs, since we rarely know
+  // the type of a file prior to reading it.
+
+  var type
+  var ClassType
+
+  if (props.type &#x26;&#x26; typeof props.type === &#x27;function&#x27;) {
+    type = props.type
+    ClassType = type
+  } else {
+    type = getType(props)
+    ClassType = Reader
+  }
+
+  if (currentStat &#x26;&#x26; !type) {
+    type = getType(currentStat)
+    props[type] = true
+    props.type = type
+  }
+
+  switch (type) {
+    case &#x27;Directory&#x27;:
+      ClassType = require(&#x27;./dir-reader.js&#x27;)
+      break
+
+    case &#x27;Link&#x27;:
+    // XXX hard links are just files.
+    // However, it would be good to keep track of files&#x27; dev+inode
+    // and nlink values, and create a HardLinkReader that emits
+    // a linkpath value of the original copy, so that the tar
+    // writer can preserve them.
+    // ClassType = HardLinkReader
+    // break
+
+    case &#x27;File&#x27;:
+      ClassType = require(&#x27;./file-reader.js&#x27;)
+      break
+
+    case &#x27;SymbolicLink&#x27;:
+      ClassType = LinkReader
+      break
+
+    case &#x27;Socket&#x27;:
+      ClassType = require(&#x27;./socket-reader.js&#x27;)
+      break
+
+    case null:
+      ClassType = require(&#x27;./proxy-reader.js&#x27;)
+      break
+  }
+
+  if (!(self instanceof ClassType)) {
+    return new ClassType(props)
+  }
+
+  Abstract.call(self)
+
+  if (!props.path) {
+    self.error(&#x27;Must provide a path&#x27;, null, true)
+  }
+
+  self.readable = true
+  self.writable = false
+
+  self.type = type
+  self.props = props
+  self.depth = props.depth = props.depth || 0
+  self.parent = props.parent || null
+  self.root = props.root || (props.parent &#x26;&#x26; props.parent.root) || self
+
+  self._path = self.path = path.resolve(props.path)
+  if (process.platform === &#x27;win32&#x27;) {
+    self.path = self._path = self.path.replace(/\?/g, &#x27;_&#x27;)
+    if (self._path.length &#x3e;= 260) {
+      // how DOES one create files on the moon?
+      // if the path has spaces in it, then UNC will fail.
+      self._swallowErrors = true
+      // if (self._path.indexOf(&#x22; &#x22;) === -1) {
+      self._path = &#x27;\\\\?\\&#x27; + self.path.replace(/\//g, &#x27;\\&#x27;)
+    // }
+    }
+  }
+  self.basename = props.basename = path.basename(self.path)
+  self.dirname = props.dirname = path.dirname(self.path)
+
+  // these have served their purpose, and are now just noisy clutter
+  props.parent = props.root = null
+
+  // console.error(&#x22;\n\n\n%s setting size to&#x22;, props.path, props.size)
+  self.size = props.size
+  self.filter = typeof props.filter === &#x27;function&#x27; ? props.filter : null
+  if (props.sort === &#x27;alpha&#x27;) props.sort = alphasort
+
+  // start the ball rolling.
+  // this will stat the thing, and then call self._read()
+  // to start reading whatever it is.
+  // console.error(&#x22;calling stat&#x22;, props.path, currentStat)
+  self._stat(currentStat)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.buffer_entry" id="apidoc.element.tar.buffer_entry">
+        function <span class="apidocSignatureSpan">tar.</span>buffer_entry
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function BufferEntry() {
+  Entry.apply(this, arguments)
+  this._buffer = new Buffer(this.props.size)
+  this._offset = 0
+  this.body = &#x22;&#x22;
+  this.on(&#x22;end&#x22;, function () {
+    this.body = this._buffer.toString().slice(0, -1)
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.entry" id="apidoc.element.tar.entry">
+        function <span class="apidocSignatureSpan">tar.</span>entry
+        <span class="apidocSignatureSpan">(header, extended, global)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Entry(header, extended, global) {
+  Stream.call(this)
+  this.readable = true
+  this.writable = true
+
+  this._needDrain = false
+  this._paused = false
+  this._reading = false
+  this._ending = false
+  this._ended = false
+  this._remaining = 0
+  this._abort = false
+  this._queue = []
+  this._index = 0
+  this._queueLen = 0
+
+  this._read = this._read.bind(this)
+
+  this.props = {}
+  this._header = header
+  this._extended = extended || {}
+
+  // globals can change throughout the course of
+  // a file parse operation.  Freeze it at its current state.
+  this._global = {}
+  var me = this
+  Object.keys(global || {}).forEach(function (g) {
+    me._global[g] = global[g]
+  })
+
+  this._setProps()
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.entry_writer" id="apidoc.element.tar.entry_writer">
+        function <span class="apidocSignatureSpan">tar.</span>entry_writer
+        <span class="apidocSignatureSpan">(props)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function EntryWriter(props) {
+  var me = this
+
+  if (!(me instanceof EntryWriter)) {
+    return new EntryWriter(props)
+  }
+
+  Stream.apply(this)
+
+  me.writable = true
+  me.readable = true
+
+  me._stream = new BlockStream(512)
+
+  me._stream.on(&#x22;data&#x22;, function (c) {
+    me.emit(&#x22;data&#x22;, c)
+  })
+
+  me._stream.on(&#x22;drain&#x22;, function () {
+    me.emit(&#x22;drain&#x22;)
+  })
+
+  me._stream.on(&#x22;end&#x22;, function () {
+    me.emit(&#x22;end&#x22;)
+    me.emit(&#x22;close&#x22;)
+  })
+
+  me.props = props
+  if (props.type === &#x22;Directory&#x22;) {
+    props.size = 0
+  }
+  props.ustar = &#x22;ustar\0&#x22;
+  props.ustarver = &#x22;00&#x22;
+  me.path = props.path
+
+  me._buffer = []
+  me._didHeader = false
+  me._meta = false
+
+  me.on(&#x22;pipe&#x22;, function () {
+    me._process()
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.extended_header" id="apidoc.element.tar.extended_header">
+        function <span class="apidocSignatureSpan">tar.</span>extended_header
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function ExtendedHeader() {
+  Entry.apply(this, arguments)
+  this.on(&#x22;data&#x22;, this._parse)
+  this.fields = {}
+  this._position = 0
+  this._fieldPos = 0
+  this._state = SIZE
+  this._sizeBuf = []
+  this._keyBuf = []
+  this._valBuf = []
+  this._size = -1
+  this._key = &#x22;&#x22;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.extended_header_writer" id="apidoc.element.tar.extended_header_writer">
+        function <span class="apidocSignatureSpan">tar.</span>extended_header_writer
+        <span class="apidocSignatureSpan">(props)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function ExtendedHeaderWriter(props) {
+  // console.error(&#x22;&#x3e;&#x3e; ehw ctor&#x22;)
+  var me = this
+
+  if (!(me instanceof ExtendedHeaderWriter)) {
+    return new ExtendedHeaderWriter(props)
+  }
+
+  me.fields = props
+
+  var p =
+    { path : (&#x22;PaxHeader&#x22; + path.join(&#x22;/&#x22;, props.path || &#x22;&#x22;))
+             .replace(/\\/g, &#x22;/&#x22;).substr(0, 100)
+    , mode : props.mode || 0666
+    , uid : props.uid || 0
+    , gid : props.gid || 0
+    , size : 0 // will be set later
+    , mtime : props.mtime || Date.now() / 1000
+    , type : &#x22;x&#x22;
+    , linkpath : &#x22;&#x22;
+    , ustar : &#x22;ustar\0&#x22;
+    , ustarver : &#x22;00&#x22;
+    , uname : props.uname || &#x22;&#x22;
+    , gname : props.gname || &#x22;&#x22;
+    , devmaj : props.devmaj || 0
+    , devmin : props.devmin || 0
+    }
+
+
+  EntryWriter.call(me, p)
+  // console.error(&#x22;&#x3e;&#x3e; ehw props&#x22;, me.props)
+  me.props = p
+
+  me._meta = true
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.global_header_writer" id="apidoc.element.tar.global_header_writer">
+        function <span class="apidocSignatureSpan">tar.</span>global_header_writer
+        <span class="apidocSignatureSpan">(props)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function GlobalHeaderWriter(props) {
+  if (!(this instanceof GlobalHeaderWriter)) {
+    return new GlobalHeaderWriter(props)
+  }
+  ExtendedHeaderWriter.call(this, props)
+  this.props.type = &#x22;g&#x22;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.header" id="apidoc.element.tar.header">
+        function <span class="apidocSignatureSpan">tar.</span>header
+        <span class="apidocSignatureSpan">(block)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function TarHeader(block) {
+  if (!(this instanceof TarHeader)) return new TarHeader(block)
+  if (block) this.decode(block)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.tar.Extract" id="apidoc.module.tar.Extract">module tar.Extract</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Extract.Extract" id="apidoc.element.tar.Extract.Extract">
+        function <span class="apidocSignatureSpan">tar.</span>Extract
+        <span class="apidocSignatureSpan">(opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Extract(opts) {
+  if (!(this instanceof Extract)) return new Extract(opts)
+  tar.Parse.apply(this)
+
+  if (typeof opts !== &#x22;object&#x22;) {
+    opts = { path: opts }
+  }
+
+  // better to drop in cwd? seems more standard.
+  opts.path = opts.path || path.resolve(&#x22;node-tar-extract&#x22;)
+  opts.type = &#x22;Directory&#x22;
+  opts.Directory = true
+
+  // similar to --strip or --strip-components
+  opts.strip = +opts.strip
+  if (!opts.strip || opts.strip &#x3c;= 0) opts.strip = 0
+
+  this._fst = fstream.Writer(opts)
+
+  this.pause()
+  var me = this
+
+  // Hardlinks in tarballs are relative to the root
+  // of the tarball.  So, they need to be resolved against
+  // the target directory in order to be created properly.
+  me.on(&#x22;entry&#x22;, function (entry) {
+    // if there&#x27;s a &#x22;strip&#x22; argument, then strip off that many
+    // path components.
+    if (opts.strip) {
+      var p = entry.path.split(&#x22;/&#x22;).slice(opts.strip).join(&#x22;/&#x22;)
+      entry.path = entry.props.path = p
+      if (entry.linkpath) {
+        var lp = entry.linkpath.split(&#x22;/&#x22;).slice(opts.strip).join(&#x22;/&#x22;)
+        entry.linkpath = entry.props.linkpath = lp
+      }
+    }
+    if (entry.type === &#x22;Link&#x22;) {
+      entry.linkpath = entry.props.linkpath =
+        path.join(opts.path, path.join(&#x22;/&#x22;, entry.props.linkpath))
+    }
+
+    if (entry.type === &#x22;SymbolicLink&#x22;) {
+      var dn = path.dirname(entry.path) || &#x22;&#x22;
+      var linkpath = entry.props.linkpath
+      var target = path.resolve(opts.path, dn, linkpath)
+      if (target.indexOf(opts.path) !== 0) {
+        linkpath = path.join(opts.path, path.join(&#x22;/&#x22;, linkpath))
+      }
+      entry.linkpath = entry.props.linkpath = linkpath
+    }
+  })
+
+  this._fst.on(&#x22;ready&#x22;, function () {
+    me.pipe(me._fst, { end: false })
+    me.resume()
+  })
+
+  this._fst.on(&#x27;error&#x27;, function(err) {
+    me.emit(&#x27;error&#x27;, err)
+  })
+
+  this._fst.on(&#x27;drain&#x27;, function() {
+    me.emit(&#x27;drain&#x27;)
+  })
+
+  // this._fst.on(&#x22;end&#x22;, function () {
+  //   console.error(&#x22;\nEEEE Extract End&#x22;, me._fst.path)
+  // })
+
+  this._fst.on(&#x22;close&#x22;, function () {
+    // console.error(&#x22;\nEEEE Extract End&#x22;, me._fst.path)
+    me.emit(&#x22;finish&#x22;)
+    me.emit(&#x22;end&#x22;)
+    me.emit(&#x22;close&#x22;)
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+This only works with directories, it does not work with individual files.
+
+The optional `properties` object are used to set properties in the tar
+&#x27;Global Extended Header&#x27;. If the `fromBase` property is set to true,
+the tar will contain files relative to the path passed, and not with
+the path included.
+
+### tar.<span class="apidocCodeKeywordSpan">Extract</span>([options])
+
+Returns a through stream. Write tar data to the stream and the files
+in the tarball will be extracted onto the filesystem.
+
+`options` can be:
+
+```js
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Extract.super_" id="apidoc.element.tar.Extract.super_">
+        function <span class="apidocSignatureSpan">tar.Extract.</span>super_
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Parse() {
+  var me = this
+  if (!(me instanceof Parse)) return new Parse()
+
+  // doesn&#x27;t apply fstream.Reader ctor?
+  // no, becasue we don&#x27;t want to stat/etc, we just
+  // want to get the entry/add logic from .pipe()
+  Stream.apply(me)
+
+  me.writable = true
+  me.readable = true
+  me._stream = new BlockStream(512)
+  me.position = 0
+  me._ended = false
+
+  me._stream.on(&#x22;error&#x22;, function (e) {
+    me.emit(&#x22;error&#x22;, e)
+  })
+
+  me._stream.on(&#x22;data&#x22;, function (c) {
+    me._process(c)
+  })
+
+  me._stream.on(&#x22;end&#x22;, function () {
+    me._streamEnd()
+  })
+
+  me._stream.on(&#x22;drain&#x22;, function () {
+    me.emit(&#x22;drain&#x22;)
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.tar.Extract.prototype" id="apidoc.module.tar.Extract.prototype">module tar.Extract.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Extract.prototype._streamEnd" id="apidoc.element.tar.Extract.prototype._streamEnd">
+        function <span class="apidocSignatureSpan">tar.Extract.prototype.</span>_streamEnd
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_streamEnd = function () {
+  var me = this
+  if (!me._ended || me._entry) me.error(&#x22;unexpected eof&#x22;)
+  me._fst.end()
+  // my .end() is coming later.
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.tar.Pack" id="apidoc.module.tar.Pack">module tar.Pack</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Pack.Pack" id="apidoc.element.tar.Pack.Pack">
+        function <span class="apidocSignatureSpan">tar.</span>Pack
+        <span class="apidocSignatureSpan">(props)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Pack(props) {
+  // console.error(&#x22;-- p ctor&#x22;)
+  var me = this
+  if (!(me instanceof Pack)) return new Pack(props)
+
+  if (props) me._noProprietary = props.noProprietary
+  else me._noProprietary = false
+
+  me._global = props
+
+  me.readable = true
+  me.writable = true
+  me._buffer = []
+  // console.error(&#x22;-- -- set current to null in ctor&#x22;)
+  me._currentEntry = null
+  me._processing = false
+
+  me._pipeRoot = null
+  me.on(&#x22;pipe&#x22;, function (src) {
+    if (src.root === me._pipeRoot) return
+    me._pipeRoot = src
+    src.on(&#x22;end&#x22;, function () {
+      me._pipeRoot = null
+    })
+    me.add(src)
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+See `examples/` for usage examples.
+
+### var tar = require(&#x27;tar&#x27;)
+
+Returns an object with `.Pack`, `.Extract` and `.Parse` methods.
+
+### tar.<span class="apidocCodeKeywordSpan">Pack</span>([properties])
+
+Returns a through stream. Use
+[fstream](https://npmjs.org/package/fstream) to write files into the
+pack stream and you will receive tar archive data from the pack
+stream.
+
+This only works with directories, it does not work with individual files.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Pack.super_" id="apidoc.element.tar.Pack.super_">
+        function <span class="apidocSignatureSpan">tar.Pack.</span>super_
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Stream() {
+  EE.call(this);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.tar.Pack.prototype" id="apidoc.module.tar.Pack.prototype">module tar.Pack.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Pack.prototype._process" id="apidoc.element.tar.Pack.prototype._process">
+        function <span class="apidocSignatureSpan">tar.Pack.prototype.</span>_process
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_process = function () {
+  var me = this
+  if (me._paused || me._processing) {
+    return
+  }
+
+  var entry = me._buffer.shift()
+
+  if (!entry) {
+    if (me._needDrain) {
+      me.emit(&#x22;drain&#x22;)
+    }
+    return
+  }
+
+  if (entry.ready === false) {
+    // console.error(&#x22;-- entry is not ready&#x22;, entry)
+    me._buffer.unshift(entry)
+    entry.on(&#x22;ready&#x22;, function () {
+      // console.error(&#x22;-- -- ready!&#x22;, entry)
+      me._process()
+    })
+    return
+  }
+
+  me._processing = true
+
+  if (entry === eof) {
+    // need 2 ending null blocks.
+    me.emit(&#x22;data&#x22;, eof)
+    me.emit(&#x22;data&#x22;, eof)
+    me.emit(&#x22;end&#x22;)
+    me.emit(&#x22;close&#x22;)
+    return
+  }
+
+  // Change the path to be relative to the root dir that was
+  // added to the tarball.
+  //
+  // XXX This should be more like how -C works, so you can
+  // explicitly set a root dir, and also explicitly set a pathname
+  // in the tarball to use.  That way we can skip a lot of extra
+  // work when resolving symlinks for bundled dependencies in npm.
+
+  var root = path.dirname((entry.root || entry).path);
+  if (me._global &#x26;&#x26; me._global.fromBase &#x26;&#x26; entry.root &#x26;&#x26; entry.root.path) {
+    // user set &#x27;fromBase: true&#x27; indicating tar root should be directory itself
+    root = entry.root.path;
+  }
+
+  var wprops = {}
+
+  Object.keys(entry.props || {}).forEach(function (k) {
+    wprops[k] = entry.props[k]
+  })
+
+  if (me._noProprietary) wprops.noProprietary = true
+
+  wprops.path = path.relative(root, entry.path || &#x27;&#x27;)
+
+  // actually not a matter of opinion or taste.
+  if (process.platform === &#x22;win32&#x22;) {
+    wprops.path = wprops.path.replace(/\\/g, &#x22;/&#x22;)
+  }
+
+  if (!wprops.type)
+    wprops.type = &#x27;Directory&#x27;
+
+  switch (wprops.type) {
+    // sockets not supported
+    case &#x22;Socket&#x22;:
+      return
+
+    case &#x22;Directory&#x22;:
+      wprops.path += &#x22;/&#x22;
+      wprops.size = 0
+      break
+
+    case &#x22;Link&#x22;:
+      var lp = path.resolve(path.dirname(entry.path), entry.linkpath)
+      wprops.linkpath = path.relative(root, lp) || &#x22;.&#x22;
+      wprops.size = 0
+      break
+
+    case &#x22;SymbolicLink&#x22;:
+      var lp = path.resolve(path.dirname(entry.path), entry.linkpath)
+      wprops.linkpath = path.relative(path.dirname(entry.path), lp) || &#x22;.&#x22;
+      wprops.size = 0
+      break
+  }
+
+  // console.error(&#x22;-- new writer&#x22;, wprops)
+  // if (!wprops.type) {
+  //   // console.error(&#x22;-- no type?&#x22;, entry.constructor.name, entry)
+  // }
+
+  // console.error(&#x22;-- -- set current to new writer&#x22;, wprops.path)
+  var writer = me._currentEntry = EntryWriter(wprops)
+
+  writer.parent = me
+
+  // writer.on(&#x22;end&#x22;, function () {
+  //   // console.error(&#x22;-- -- writer end&#x22;, writer.path)
+  // })
+
+  writer.on(&#x22;data&#x22;, function (c) {
+    me.emit(&#x22;data&#x22;, c)
+  })
+
+  writer.on(&#x22;header&#x22;, function () {
+    Buffer.prototype.toJSON = function () {
+      return this.toString().split(/\0/).join(&#x22;.&#x22;)
+    }
+    // console.error(&#x22;-- -- writer header %j&#x22;, writer.props)
+    if (writer.props.size === 0) nextEntry()
+  })
+  writer.on(&#x22;close&#x22;, nextEntry)
+
+  var ended = false
+  function nextEntry () {
+    if (ended) return
+    ended = true
+
+    // console.error(&#x22;-- -- writer close&#x22;, writer.path)
+    // console.error(&#x22;-- -- set current to null&#x22;, wprops.path)
+    me._currentEntry = null
+    me._processing = false
+    me._process()
+  }
+
+  writer.on(&#x22;error&#x22;, function (er) {
+    // console.error(&#x22;-- -- writer error&#x22;, writer.path)
+    me.emit(&#x22;error&#x22;, er)
+  })
+
+  // if it&#x27;s the root, then there&#x27;s no need to add its entries,
+  // or data, since they&#x27;ll be added directly.
+  if (entry === me._pipeRoot) {
+    // console.error(&#x22;-- is the root, don&#x27;t auto-add&#x22;)
+    writer.add = null
+  }
+
+  entry.pipe(writer)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+me.path = props.path
+
+me._buffer = []
+me._didHeader = false
+me._meta = false
+
+me.on(&#x22;pipe&#x22;, function () {
+  me.<span class="apidocCodeKeywordSpan">_process</span>()
+})
+}
+
+EntryWriter.prototype.write = function (c) {
+// console.error(&#x22;.. ew write&#x22;)
+if (this._ended) return this.emit(&#x22;error&#x22;, new Error(&#x22;write after end&#x22;))
+this._buffer.push(c)
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Pack.prototype.add" id="apidoc.element.tar.Pack.prototype.add">
+        function <span class="apidocSignatureSpan">tar.Pack.prototype.</span>add
+        <span class="apidocSignatureSpan">(stream)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">add = function (stream) {
+  if (this._global &#x26;&#x26; !this._didGlobal) this.addGlobal(this._global)
+
+  if (this._ended) return this.emit(&#x22;error&#x22;, new Error(&#x22;add after end&#x22;))
+
+  collect(stream)
+  this._buffer.push(stream)
+  this._process()
+  this._needDrain = this._buffer.length &#x3e; 0
+  return !this._needDrain
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+// console.error(&#x22;.. ew add&#x22;)
+if (!this.parent) return this.emit(&#x22;error&#x22;, new Error(&#x22;no parent&#x22;))
+
+// make sure that the _header and such is emitted, and clear out
+// the _currentEntry link on the parent.
+if (!this._ended) this.end()
+
+return this.parent.<span class="apidocCodeKeywordSpan">add</span>(entry)
+}
+
+EntryWriter.prototype._header = function () {
+// console.error(&#x22;.. ew header&#x22;)
+if (this._didHeader) return
+this._didHeader = true
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Pack.prototype.addGlobal" id="apidoc.element.tar.Pack.prototype.addGlobal">
+        function <span class="apidocSignatureSpan">tar.Pack.prototype.</span>addGlobal
+        <span class="apidocSignatureSpan">(props)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">addGlobal = function (props) {
+  // console.error(&#x22;-- p addGlobal&#x22;)
+  if (this._didGlobal) return
+  this._didGlobal = true
+
+  var me = this
+  GlobalHeaderWriter(props)
+    .on(&#x22;data&#x22;, function (c) {
+      me.emit(&#x22;data&#x22;, c)
+    })
+    .end()
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Pack.prototype.destroy" id="apidoc.element.tar.Pack.prototype.destroy">
+        function <span class="apidocSignatureSpan">tar.Pack.prototype.</span>destroy
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">destroy = function () {}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Pack.prototype.end" id="apidoc.element.tar.Pack.prototype.end">
+        function <span class="apidocSignatureSpan">tar.Pack.prototype.</span>end
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">end = function () {
+  this._ended = true
+  this._buffer.push(eof)
+  this._process()
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+EntryWriter.prototype.add = function (entry) {
+// console.error(&#x22;.. ew add&#x22;)
+if (!this.parent) return this.emit(&#x22;error&#x22;, new Error(&#x22;no parent&#x22;))
+
+// make sure that the _header and such is emitted, and clear out
+// the _currentEntry link on the parent.
+if (!this._ended) this.<span class="apidocCodeKeywordSpan">end</span>()
+
+return this.parent.add(entry)
+}
+
+EntryWriter.prototype._header = function () {
+// console.error(&#x22;.. ew header&#x22;)
+if (this._didHeader) return
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Pack.prototype.pause" id="apidoc.element.tar.Pack.prototype.pause">
+        function <span class="apidocSignatureSpan">tar.Pack.prototype.</span>pause
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">pause = function () {
+  this._paused = true
+  if (this._currentEntry) this._currentEntry.pause()
+  this.emit(&#x22;pause&#x22;)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Pack.prototype.resume" id="apidoc.element.tar.Pack.prototype.resume">
+        function <span class="apidocSignatureSpan">tar.Pack.prototype.</span>resume
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">resume = function () {
+  this._paused = false
+  if (this._currentEntry) this._currentEntry.resume()
+  this.emit(&#x22;resume&#x22;)
+  this._process()
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Pack.prototype.write" id="apidoc.element.tar.Pack.prototype.write">
+        function <span class="apidocSignatureSpan">tar.Pack.prototype.</span>write
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">write = function () {}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  var buf = this._buffer
+  for (var i = 0; i &#x3c; buf.length; i ++) {
+// console.error(&#x22;.. .. .. i=%d&#x22;, i)
+
+var c = buf[i]
+
+if (c === EOF) this._stream.end()
+else this._stream.<span class="apidocCodeKeywordSpan">write</span>(c)
+
+if (this._paused) {
+  // console.error(&#x22;.. .. .. paused mid-emission&#x22;)
+  this._processing = false
+  if (i &#x3c; buf.length) {
+    this._needDrain = true
+    this._buffer = buf.slice(i + 1)
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.tar.Parse" id="apidoc.module.tar.Parse">module tar.Parse</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Parse.Parse" id="apidoc.element.tar.Parse.Parse">
+        function <span class="apidocSignatureSpan">tar.</span>Parse
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Parse() {
+  var me = this
+  if (!(me instanceof Parse)) return new Parse()
+
+  // doesn&#x27;t apply fstream.Reader ctor?
+  // no, becasue we don&#x27;t want to stat/etc, we just
+  // want to get the entry/add logic from .pipe()
+  Stream.apply(me)
+
+  me.writable = true
+  me.readable = true
+  me._stream = new BlockStream(512)
+  me.position = 0
+  me._ended = false
+
+  me._stream.on(&#x22;error&#x22;, function (e) {
+    me.emit(&#x22;error&#x22;, e)
+  })
+
+  me._stream.on(&#x22;data&#x22;, function (c) {
+    me._process(c)
+  })
+
+  me._stream.on(&#x22;end&#x22;, function () {
+    me._streamEnd()
+  })
+
+  me._stream.on(&#x22;drain&#x22;, function () {
+    me.emit(&#x22;drain&#x22;)
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  strip: 0, // how many path segments to strip from the root when extracting
+}
+```
+
+`options` also get passed to the `fstream.Writer` instance that `tar`
+uses internally.
+
+### tar.<span class="apidocCodeKeywordSpan">Parse</span>()
+
+Returns a writable stream. Write tar data to it and it will emit
+`entry` events for each entry parsed from the tarball. This is used by
+`tar.Extract`.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Parse.create" id="apidoc.element.tar.Parse.create">
+        function <span class="apidocSignatureSpan">tar.Parse.</span>create
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Parse() {
+  var me = this
+  if (!(me instanceof Parse)) return new Parse()
+
+  // doesn&#x27;t apply fstream.Reader ctor?
+  // no, becasue we don&#x27;t want to stat/etc, we just
+  // want to get the entry/add logic from .pipe()
+  Stream.apply(me)
+
+  me.writable = true
+  me.readable = true
+  me._stream = new BlockStream(512)
+  me.position = 0
+  me._ended = false
+
+  me._stream.on(&#x22;error&#x22;, function (e) {
+    me.emit(&#x22;error&#x22;, e)
+  })
+
+  me._stream.on(&#x22;data&#x22;, function (c) {
+    me._process(c)
+  })
+
+  me._stream.on(&#x22;end&#x22;, function () {
+    me._streamEnd()
+  })
+
+  me._stream.on(&#x22;drain&#x22;, function () {
+    me.emit(&#x22;drain&#x22;)
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Parse.super_" id="apidoc.element.tar.Parse.super_">
+        function <span class="apidocSignatureSpan">tar.Parse.</span>super_
+        <span class="apidocSignatureSpan">(props, currentStat)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Reader(props, currentStat) {
+  var self = this
+  if (!(self instanceof Reader)) return new Reader(props, currentStat)
+
+  if (typeof props === &#x27;string&#x27;) {
+    props = { path: props }
+  }
+
+  // polymorphism.
+  // call fstream.Reader(dir) to get a DirReader object, etc.
+  // Note that, unlike in the Writer case, ProxyReader is going
+  // to be the *normal* state of affairs, since we rarely know
+  // the type of a file prior to reading it.
+
+  var type
+  var ClassType
+
+  if (props.type &#x26;&#x26; typeof props.type === &#x27;function&#x27;) {
+    type = props.type
+    ClassType = type
+  } else {
+    type = getType(props)
+    ClassType = Reader
+  }
+
+  if (currentStat &#x26;&#x26; !type) {
+    type = getType(currentStat)
+    props[type] = true
+    props.type = type
+  }
+
+  switch (type) {
+    case &#x27;Directory&#x27;:
+      ClassType = require(&#x27;./dir-reader.js&#x27;)
+      break
+
+    case &#x27;Link&#x27;:
+    // XXX hard links are just files.
+    // However, it would be good to keep track of files&#x27; dev+inode
+    // and nlink values, and create a HardLinkReader that emits
+    // a linkpath value of the original copy, so that the tar
+    // writer can preserve them.
+    // ClassType = HardLinkReader
+    // break
+
+    case &#x27;File&#x27;:
+      ClassType = require(&#x27;./file-reader.js&#x27;)
+      break
+
+    case &#x27;SymbolicLink&#x27;:
+      ClassType = LinkReader
+      break
+
+    case &#x27;Socket&#x27;:
+      ClassType = require(&#x27;./socket-reader.js&#x27;)
+      break
+
+    case null:
+      ClassType = require(&#x27;./proxy-reader.js&#x27;)
+      break
+  }
+
+  if (!(self instanceof ClassType)) {
+    return new ClassType(props)
+  }
+
+  Abstract.call(self)
+
+  if (!props.path) {
+    self.error(&#x27;Must provide a path&#x27;, null, true)
+  }
+
+  self.readable = true
+  self.writable = false
+
+  self.type = type
+  self.props = props
+  self.depth = props.depth = props.depth || 0
+  self.parent = props.parent || null
+  self.root = props.root || (props.parent &#x26;&#x26; props.parent.root) || self
+
+  self._path = self.path = path.resolve(props.path)
+  if (process.platform === &#x27;win32&#x27;) {
+    self.path = self._path = self.path.replace(/\?/g, &#x27;_&#x27;)
+    if (self._path.length &#x3e;= 260) {
+      // how DOES one create files on the moon?
+      // if the path has spaces in it, then UNC will fail.
+      self._swallowErrors = true
+      // if (self._path.indexOf(&#x22; &#x22;) === -1) {
+      self._path = &#x27;\\\\?\\&#x27; + self.path.replace(/\//g, &#x27;\\&#x27;)
+    // }
+    }
+  }
+  self.basename = props.basename = path.basename(self.path)
+  self.dirname = props.dirname = path.dirname(self.path)
+
+  // these have served their purpose, and are now just noisy clutter
+  props.parent = props.root = null
+
+  // console.error(&#x22;\n\n\n%s setting size to&#x22;, props.path, props.size)
+  self.size = props.size
+  self.filter = typeof props.filter === &#x27;function&#x27; ? props.filter : null
+  if (props.sort === &#x27;alpha&#x27;) props.sort = alphasort
+
+  // start the ball rolling.
+  // this will stat the thing, and then call self._read()
+  // to start reading whatever it is.
+  // console.error(&#x22;calling stat&#x22;, props.path, currentStat)
+  self._stat(currentStat)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.tar.Parse.prototype" id="apidoc.module.tar.Parse.prototype">module tar.Parse.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Parse.prototype._process" id="apidoc.element.tar.Parse.prototype._process">
+        function <span class="apidocSignatureSpan">tar.Parse.prototype.</span>_process
+        <span class="apidocSignatureSpan">(c)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_process = function (c) {
+  assert(c &#x26;&#x26; c.length === 512, &#x22;block size should be 512&#x22;)
+
+  // one of three cases.
+  // 1. A new header
+  // 2. A part of a file/extended header
+  // 3. One of two or more EOF null blocks
+
+  if (this._entry) {
+    var entry = this._entry
+    if(!entry._abort) entry.write(c)
+    else {
+      entry._remaining -= c.length
+      if(entry._remaining &#x3c; 0) entry._remaining = 0
+    }
+    if (entry._remaining === 0) {
+      entry.end()
+      this._entry = null
+    }
+  } else {
+    // either zeroes or a header
+    var zero = true
+    for (var i = 0; i &#x3c; 512 &#x26;&#x26; zero; i ++) {
+      zero = c[i] === 0
+    }
+
+    // eof is *at least* 2 blocks of nulls, and then the end of the
+    // file.  you can put blocks of nulls between entries anywhere,
+    // so appending one tarball to another is technically valid.
+    // ending without the eof null blocks is not allowed, however.
+    if (zero) {
+      if (this._eofStarted)
+        this._ended = true
+      this._eofStarted = true
+    } else {
+      this._eofStarted = false
+      this._startEntry(c)
+    }
+  }
+
+  this.position += 512
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+me.path = props.path
+
+me._buffer = []
+me._didHeader = false
+me._meta = false
+
+me.on(&#x22;pipe&#x22;, function () {
+  me.<span class="apidocCodeKeywordSpan">_process</span>()
+})
+}
+
+EntryWriter.prototype.write = function (c) {
+// console.error(&#x22;.. ew write&#x22;)
+if (this._ended) return this.emit(&#x22;error&#x22;, new Error(&#x22;write after end&#x22;))
+this._buffer.push(c)
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Parse.prototype._read" id="apidoc.element.tar.Parse.prototype._read">
+        function <span class="apidocSignatureSpan">tar.Parse.prototype.</span>_read
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_read = function () {}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+this._remaining -= c.length
+
+// put it on the stack.
+var ql = this._queueLen
+this._queue.push(c)
+this._queueLen ++
+
+this.<span class="apidocCodeKeywordSpan">_read</span>()
+
+// either paused, or buffered
+if (this._paused || ql &#x3e; 0) {
+  this._needDrain = true
+  return false
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Parse.prototype._startEntry" id="apidoc.element.tar.Parse.prototype._startEntry">
+        function <span class="apidocSignatureSpan">tar.Parse.prototype.</span>_startEntry
+        <span class="apidocSignatureSpan">(c)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_startEntry = function (c) {
+  var header = new TarHeader(c)
+    , self = this
+    , entry
+    , ev
+    , EntryType
+    , onend
+    , meta = false
+
+  if (null === header.size || !header.cksumValid) {
+    var e = new Error(&#x22;invalid tar file&#x22;)
+    e.header = header
+    e.tar_file_offset = this.position
+    e.tar_block = this.position / 512
+    return this.emit(&#x22;error&#x22;, e)
+  }
+
+  switch (tar.types[header.type]) {
+    case &#x22;File&#x22;:
+    case &#x22;OldFile&#x22;:
+    case &#x22;Link&#x22;:
+    case &#x22;SymbolicLink&#x22;:
+    case &#x22;CharacterDevice&#x22;:
+    case &#x22;BlockDevice&#x22;:
+    case &#x22;Directory&#x22;:
+    case &#x22;FIFO&#x22;:
+    case &#x22;ContiguousFile&#x22;:
+    case &#x22;GNUDumpDir&#x22;:
+      // start a file.
+      // pass in any extended headers
+      // These ones consumers are typically most interested in.
+      EntryType = Entry
+      ev = &#x22;entry&#x22;
+      break
+
+    case &#x22;GlobalExtendedHeader&#x22;:
+      // extended headers that apply to the rest of the tarball
+      EntryType = ExtendedHeader
+      onend = function () {
+        self._global = self._global || {}
+        Object.keys(entry.fields).forEach(function (k) {
+          self._global[k] = entry.fields[k]
+        })
+      }
+      ev = &#x22;globalExtendedHeader&#x22;
+      meta = true
+      break
+
+    case &#x22;ExtendedHeader&#x22;:
+    case &#x22;OldExtendedHeader&#x22;:
+      // extended headers that apply to the next entry
+      EntryType = ExtendedHeader
+      onend = function () {
+        self._extended = entry.fields
+      }
+      ev = &#x22;extendedHeader&#x22;
+      meta = true
+      break
+
+    case &#x22;NextFileHasLongLinkpath&#x22;:
+      // set linkpath=&#x3c;contents&#x3e; in extended header
+      EntryType = BufferEntry
+      onend = function () {
+        self._extended = self._extended || {}
+        self._extended.linkpath = entry.body
+      }
+      ev = &#x22;longLinkpath&#x22;
+      meta = true
+      break
+
+    case &#x22;NextFileHasLongPath&#x22;:
+    case &#x22;OldGnuLongPath&#x22;:
+      // set path=&#x3c;contents&#x3e; in file-extended header
+      EntryType = BufferEntry
+      onend = function () {
+        self._extended = self._extended || {}
+        self._extended.path = entry.body
+      }
+      ev = &#x22;longPath&#x22;
+      meta = true
+      break
+
+    default:
+      // all the rest we skip, but still set the _entry
+      // member, so that we can skip over their data appropriately.
+      // emit an event to say that this is an ignored entry type?
+      EntryType = Entry
+      ev = &#x22;ignoredEntry&#x22;
+      break
+  }
+
+  var global, extended
+  if (meta) {
+    global = extended = null
+  } else {
+    var global = this._global
+    var extended = this._extended
+
+    // extendedHeader only applies to one entry, so once we start
+    // an entry, it&#x27;s over.
+    this._extended = null
+  }
+  entry = new EntryType(header, extended, global)
+  entry.meta = meta
+
+  // only proxy data events of normal files.
+  if (!meta) {
+    entry.on(&#x22;data&#x22;, function (c) {
+      me.emit(&#x22;data&#x22;, c)
+    })
+  }
+
+  if (onend) entry.on(&#x22;end&#x22;, onend)
+
+  this._entry = entry
+  var me = this
+
+  entry.on(&#x22;pause&#x22;, function () {
+    me.pause()
+  })
+
+  entry.on(&#x22;resume&#x22;, function () {
+    me.resume()
+  })
+
+  if (this.listeners(&#x22;*&#x22;).length) {
+    this.emit(&#x22;*&#x22;, ev, entry)
+  }
+
+  this.emit(ev, entry)
+
+  // Zero-byte entry.  End immediately.
+  if (entry.props.size === 0) {
+    entry.end()
+    this._entry = null
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Parse.prototype._streamEnd" id="apidoc.element.tar.Parse.prototype._streamEnd">
+        function <span class="apidocSignatureSpan">tar.Parse.prototype.</span>_streamEnd
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_streamEnd = function () {
+  var me = this
+  if (!me._ended || me._entry) me.error(&#x22;unexpected eof&#x22;)
+  me.emit(&#x22;end&#x22;)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Parse.prototype.end" id="apidoc.element.tar.Parse.prototype.end">
+        function <span class="apidocSignatureSpan">tar.Parse.prototype.</span>end
+        <span class="apidocSignatureSpan">(c)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">end = function (c) {
+  this._ended = true
+  return this._stream.end(c)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+EntryWriter.prototype.add = function (entry) {
+// console.error(&#x22;.. ew add&#x22;)
+if (!this.parent) return this.emit(&#x22;error&#x22;, new Error(&#x22;no parent&#x22;))
+
+// make sure that the _header and such is emitted, and clear out
+// the _currentEntry link on the parent.
+if (!this._ended) this.<span class="apidocCodeKeywordSpan">end</span>()
+
+return this.parent.add(entry)
+}
+
+EntryWriter.prototype._header = function () {
+// console.error(&#x22;.. ew header&#x22;)
+if (this._didHeader) return
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Parse.prototype.write" id="apidoc.element.tar.Parse.prototype.write">
+        function <span class="apidocSignatureSpan">tar.Parse.prototype.</span>write
+        <span class="apidocSignatureSpan">(c)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">write = function (c) {
+  if (this._ended) {
+    // gnutar puts a LOT of nulls at the end.
+    // you can keep writing these things forever.
+    // Just ignore them.
+    for (var i = 0, l = c.length; i &#x3e; l; i ++) {
+      if (c[i] !== 0) return this.error(&#x22;write() after end()&#x22;)
+    }
+    return
+  }
+  return this._stream.write(c)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  var buf = this._buffer
+  for (var i = 0; i &#x3c; buf.length; i ++) {
+// console.error(&#x22;.. .. .. i=%d&#x22;, i)
+
+var c = buf[i]
+
+if (c === EOF) this._stream.end()
+else this._stream.<span class="apidocCodeKeywordSpan">write</span>(c)
+
+if (this._paused) {
+  // console.error(&#x22;.. .. .. paused mid-emission&#x22;)
+  this._processing = false
+  if (i &#x3c; buf.length) {
+    this._needDrain = true
+    this._buffer = buf.slice(i + 1)
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.tar.Parse.super_" id="apidoc.module.tar.Parse.super_">module tar.Parse.super_</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Parse.super_.super_" id="apidoc.element.tar.Parse.super_.super_">
+        function <span class="apidocSignatureSpan">tar.Parse.</span>super_
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Abstract() {
+  Stream.call(this)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Parse.super_.Dir" id="apidoc.element.tar.Parse.super_.Dir">
+        function <span class="apidocSignatureSpan">tar.Parse.super_.</span>Dir
+        <span class="apidocSignatureSpan">(props)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function DirReader(props) {
+  var self = this
+  if (!(self instanceof DirReader)) {
+    throw new Error(&#x27;DirReader must be called as constructor.&#x27;)
+  }
+
+  // should already be established as a Directory type
+  if (props.type !== &#x27;Directory&#x27; || !props.Directory) {
+    throw new Error(&#x27;Non-directory type &#x27; + props.type)
+  }
+
+  self.entries = null
+  self._index = -1
+  self._paused = false
+  self._length = -1
+
+  if (props.sort) {
+    this.sort = props.sort
+  }
+
+  Reader.call(this, props)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Parse.super_.File" id="apidoc.element.tar.Parse.super_.File">
+        function <span class="apidocSignatureSpan">tar.Parse.super_.</span>File
+        <span class="apidocSignatureSpan">(props)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function FileReader(props) {
+  // console.error(&#x22;    FR create&#x22;, props.path, props.size, new Error().stack)
+  var self = this
+  if (!(self instanceof FileReader)) {
+    throw new Error(&#x27;FileReader must be called as constructor.&#x27;)
+  }
+
+  // should already be established as a File type
+  // XXX Todo: preserve hardlinks by tracking dev+inode+nlink,
+  // with a HardLinkReader class.
+  if (!((props.type === &#x27;Link&#x27; &#x26;&#x26; props.Link) ||
+    (props.type === &#x27;File&#x27; &#x26;&#x26; props.File))) {
+    throw new Error(&#x27;Non-file type &#x27; + props.type)
+  }
+
+  self._buffer = []
+  self._bytesEmitted = 0
+  Reader.call(self, props)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Parse.super_.Link" id="apidoc.element.tar.Parse.super_.Link">
+        function <span class="apidocSignatureSpan">tar.Parse.super_.</span>Link
+        <span class="apidocSignatureSpan">(props)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function LinkReader(props) {
+  var self = this
+  if (!(self instanceof LinkReader)) {
+    throw new Error(&#x27;LinkReader must be called as constructor.&#x27;)
+  }
+
+  if (!((props.type === &#x27;Link&#x27; &#x26;&#x26; props.Link) ||
+    (props.type === &#x27;SymbolicLink&#x27; &#x26;&#x26; props.SymbolicLink))) {
+    throw new Error(&#x27;Non-link type &#x27; + props.type)
+  }
+
+  Reader.call(self, props)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Parse.super_.Proxy" id="apidoc.element.tar.Parse.super_.Proxy">
+        function <span class="apidocSignatureSpan">tar.Parse.super_.</span>Proxy
+        <span class="apidocSignatureSpan">(props)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function ProxyReader(props) {
+  var self = this
+  if (!(self instanceof ProxyReader)) {
+    throw new Error(&#x27;ProxyReader must be called as constructor.&#x27;)
+  }
+
+  self.props = props
+  self._buffer = []
+  self.ready = false
+
+  Reader.call(self, props)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.tar.Parse.super_.Dir.prototype" id="apidoc.module.tar.Parse.super_.Dir.prototype">module tar.Parse.super_.Dir.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Parse.super_.Dir.prototype._getEntries" id="apidoc.element.tar.Parse.super_.Dir.prototype._getEntries">
+        function <span class="apidocSignatureSpan">tar.Parse.super_.Dir.prototype.</span>_getEntries
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_getEntries = function () {
+  var self = this
+
+  // race condition.  might pause() before calling _getEntries,
+  // and then resume, and try to get them a second time.
+  if (self._gotEntries) return
+  self._gotEntries = true
+
+  fs.readdir(self._path, function (er, entries) {
+    if (er) return self.error(er)
+
+    self.entries = entries
+
+    self.emit(&#x27;entries&#x27;, entries)
+    if (self._paused) self.once(&#x27;resume&#x27;, processEntries)
+    else processEntries()
+
+    function processEntries () {
+      self._length = self.entries.length
+      if (typeof self.sort === &#x27;function&#x27;) {
+        self.entries = self.entries.sort(self.sort.bind(self))
+      }
+      self._read()
+    }
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Parse.super_.Dir.prototype._read" id="apidoc.element.tar.Parse.super_.Dir.prototype._read">
+        function <span class="apidocSignatureSpan">tar.Parse.super_.Dir.prototype.</span>_read
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_read = function () {
+  var self = this
+
+  if (!self.entries) return self._getEntries()
+
+  if (self._paused || self._currentEntry || self._aborted) {
+    // console.error(&#x27;DR paused=%j, current=%j, aborted=%j&#x27;, self._paused, !!self._currentEntry, self._aborted)
+    return
+  }
+
+  self._index++
+  if (self._index &#x3e;= self.entries.length) {
+    if (!self._ended) {
+      self._ended = true
+      self.emit(&#x27;end&#x27;)
+      self.emit(&#x27;close&#x27;)
+    }
+    return
+  }
+
+  // ok, handle this one, then.
+
+  // save creating a proxy, by stat&#x27;ing the thing now.
+  var p = path.resolve(self._path, self.entries[self._index])
+  assert(p !== self._path)
+  assert(self.entries[self._index])
+
+  // set this to prevent trying to _read() again in the stat time.
+  self._currentEntry = p
+  fs[ self.props.follow ? &#x27;stat&#x27; : &#x27;lstat&#x27; ](p, function (er, stat) {
+    if (er) return self.error(er)
+
+    var who = self._proxy || self
+
+    stat.path = p
+    stat.basename = path.basename(p)
+    stat.dirname = path.dirname(p)
+    var childProps = self.getChildProps.call(who, stat)
+    childProps.path = p
+    childProps.basename = path.basename(p)
+    childProps.dirname = path.dirname(p)
+
+    var entry = Reader(childProps, stat)
+
+    // console.error(&#x22;DR Entry&#x22;, p, stat.size)
+
+    self._currentEntry = entry
+
+    // &#x22;entry&#x22; events are for direct entries in a specific dir.
+    // &#x22;child&#x22; events are for any and all children at all levels.
+    // This nomenclature is not completely final.
+
+    entry.on(&#x27;pause&#x27;, function (who) {
+      if (!self._paused &#x26;&#x26; !entry._disowned) {
+        self.pause(who)
+      }
+    })
+
+    entry.on(&#x27;resume&#x27;, function (who) {
+      if (self._paused &#x26;&#x26; !entry._disowned) {
+        self.resume(who)
+      }
+    })
+
+    entry.on(&#x27;stat&#x27;, function (props) {
+      self.emit(&#x27;_entryStat&#x27;, entry, props)
+      if (entry._aborted) return
+      if (entry._paused) {
+        entry.once(&#x27;resume&#x27;, function () {
+          self.emit(&#x27;entryStat&#x27;, entry, props)
+        })
+      } else self.emit(&#x27;entryStat&#x27;, entry, props)
+    })
+
+    entry.on(&#x27;ready&#x27;, function EMITCHILD () {
+      // console.error(&#x22;DR emit child&#x22;, entry._path)
+      if (self._paused) {
+        // console.error(&#x22;  DR emit child - try again later&#x22;)
+        // pause the child, and emit the &#x22;entry&#x22; event once we drain.
+        // console.error(&#x22;DR pausing child entry&#x22;)
+        entry.pause(self)
+        return self.once(&#x27;resume&#x27;, EMITCHILD)
+      }
+
+      // skip over sockets.  they can&#x27;t be piped around properly,
+      // so there&#x27;s really no sense even acknowledging them.
+      // if someone really wants to see them, they can listen to
+      // the &#x22;socket&#x22; events.
+      if (entry.type === &#x27;Socket&#x27;) {
+        self.emit(&#x27;socket&#x27;, entry)
+      } else {
+        self.emitEntry(entry)
+      }
+    })
+
+    var ended = false
+    entry.on(&#x27;close&#x27;, onend)
+    entry.on(&#x27;disown&#x27;, onend)
+    function onend () {
+      if (ended) return
+      ended = true
+      self.emit(&#x27;childEnd&#x27;, entry)
+      self.emit(&#x27;entryEnd&#x27;, entry)
+      self._currentEntry = null
+      if (!self._paused) {
+        self._read()
+      }
+    }
+
+    // XXX Remove this.  Works in node as of 0.6.2 or so.
+    // Long filenames should not break stuff.
+    entry.on(&#x27;error&#x27;, function (er) {
+      if (entry._swallowErrors) {
+        self.warn(er)
+        entry.emit(&#x27;end&#x27;)
+        entry.emit(&#x27;close&#x27;)
+      } else {
+        self.emit(&#x27;error&#x27;, er)
+      }
+    })
+
+    // proxy up some events.
+    ;[
+      &#x27;child&#x27;,
+      &#x27;childEnd&#x27;,
+      &#x27;warn&#x27;
+    ].forEach(function (ev) {
+      entry.on(ev, self.emit.bind(self, ev))
+    })
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+this._remaining -= c.length
+
+// put it on the stack.
+var ql = this._queueLen
+this._queue.push(c)
+this._queueLen ++
+
+this.<span class="apidocCodeKeywordSpan">_read</span>()
+
+// either paused, or buffered
+if (this._paused || ql &#x3e; 0) {
+  this._needDrain = true
+  return false
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Parse.super_.Dir.prototype.disown" id="apidoc.element.tar.Parse.super_.Dir.prototype.disown">
+        function <span class="apidocSignatureSpan">tar.Parse.super_.Dir.prototype.</span>disown
+        <span class="apidocSignatureSpan">(entry)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">disown = function (entry) {
+  entry.emit(&#x27;beforeDisown&#x27;)
+  entry._disowned = true
+  entry.parent = entry.root = null
+  if (entry === this._currentEntry) {
+    this._currentEntry = null
+  }
+  entry.emit(&#x27;disown&#x27;)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Parse.super_.Dir.prototype.emitEntry" id="apidoc.element.tar.Parse.super_.Dir.prototype.emitEntry">
+        function <span class="apidocSignatureSpan">tar.Parse.super_.Dir.prototype.</span>emitEntry
+        <span class="apidocSignatureSpan">(entry)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">emitEntry = function (entry) {
+  this.emit(&#x27;entry&#x27;, entry)
+  this.emit(&#x27;child&#x27;, entry)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Parse.super_.Dir.prototype.getChildProps" id="apidoc.element.tar.Parse.super_.Dir.prototype.getChildProps">
+        function <span class="apidocSignatureSpan">tar.Parse.super_.Dir.prototype.</span>getChildProps
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getChildProps = function () {
+  return {
+    depth: this.depth + 1,
+    root: this.root || this,
+    parent: this,
+    follow: this.follow,
+    filter: this.filter,
+    sort: this.props.sort,
+    hardlinks: this.props.hardlinks
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Parse.super_.Dir.prototype.pause" id="apidoc.element.tar.Parse.super_.Dir.prototype.pause">
+        function <span class="apidocSignatureSpan">tar.Parse.super_.Dir.prototype.</span>pause
+        <span class="apidocSignatureSpan">(who)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">pause = function (who) {
+  var self = this
+  if (self._paused) return
+  who = who || self
+  self._paused = true
+  if (self._currentEntry &#x26;&#x26; self._currentEntry.pause) {
+    self._currentEntry.pause(who)
+  }
+  self.emit(&#x27;pause&#x27;, who)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Parse.super_.Dir.prototype.resume" id="apidoc.element.tar.Parse.super_.Dir.prototype.resume">
+        function <span class="apidocSignatureSpan">tar.Parse.super_.Dir.prototype.</span>resume
+        <span class="apidocSignatureSpan">(who)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">resume = function (who) {
+  var self = this
+  if (!self._paused) return
+  who = who || self
+
+  self._paused = false
+  // console.error(&#x27;DR Emit Resume&#x27;, self._path)
+  self.emit(&#x27;resume&#x27;, who)
+  if (self._paused) {
+    // console.error(&#x27;DR Re-paused&#x27;, self._path)
+    return
+  }
+
+  if (self._currentEntry) {
+    if (self._currentEntry.resume) self._currentEntry.resume(who)
+  } else self._read()
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.tar.Parse.super_.File.prototype" id="apidoc.module.tar.Parse.super_.File.prototype">module tar.Parse.super_.File.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Parse.super_.File.prototype._getStream" id="apidoc.element.tar.Parse.super_.File.prototype._getStream">
+        function <span class="apidocSignatureSpan">tar.Parse.super_.File.prototype.</span>_getStream
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_getStream = function () {
+  var self = this
+  var stream = self._stream = fs.createReadStream(self._path, self.props)
+
+  if (self.props.blksize) {
+    stream.bufferSize = self.props.blksize
+  }
+
+  stream.on(&#x27;open&#x27;, self.emit.bind(self, &#x27;open&#x27;))
+
+  stream.on(&#x27;data&#x27;, function (c) {
+    // console.error(&#x27;\t\t%d %s&#x27;, c.length, self.basename)
+    self._bytesEmitted += c.length
+    // no point saving empty chunks
+    if (!c.length) {
+      return
+    } else if (self._paused || self._buffer.length) {
+      self._buffer.push(c)
+      self._read()
+    } else self.emit(&#x27;data&#x27;, c)
+  })
+
+  stream.on(&#x27;end&#x27;, function () {
+    if (self._paused || self._buffer.length) {
+      // console.error(&#x27;FR Buffering End&#x27;, self._path)
+      self._buffer.push(EOF)
+      self._read()
+    } else {
+      self.emit(&#x27;end&#x27;)
+    }
+
+    if (self._bytesEmitted !== self.props.size) {
+      self.error(&#x22;Didn&#x27;t get expected byte count\n&#x22; +
+        &#x27;expect: &#x27; + self.props.size + &#x27;\n&#x27; +
+        &#x27;actual: &#x27; + self._bytesEmitted)
+    }
+  })
+
+  stream.on(&#x27;close&#x27;, function () {
+    if (self._paused || self._buffer.length) {
+      // console.error(&#x27;FR Buffering Close&#x27;, self._path)
+      self._buffer.push(CLOSE)
+      self._read()
+    } else {
+      // console.error(&#x27;FR close 1&#x27;, self._path)
+      self.emit(&#x27;close&#x27;)
+    }
+  })
+
+  stream.on(&#x27;error&#x27;, function (e) {
+    self.emit(&#x27;error&#x27;, e)
+  })
+
+  self._read()
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Parse.super_.File.prototype._read" id="apidoc.element.tar.Parse.super_.File.prototype._read">
+        function <span class="apidocSignatureSpan">tar.Parse.super_.File.prototype.</span>_read
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_read = function () {
+  var self = this
+  // console.error(&#x27;FR _read&#x27;, self._path)
+  if (self._paused) {
+    // console.error(&#x27;FR _read paused&#x27;, self._path)
+    return
+  }
+
+  if (!self._stream) {
+    // console.error(&#x27;FR _getStream calling&#x27;, self._path)
+    return self._getStream()
+  }
+
+  // clear out the buffer, if there is one.
+  if (self._buffer.length) {
+    // console.error(&#x27;FR _read has buffer&#x27;, self._buffer.length, self._path)
+    var buf = self._buffer
+    for (var i = 0, l = buf.length; i &#x3c; l; i++) {
+      var c = buf[i]
+      if (c === EOF) {
+        // console.error(&#x27;FR Read emitting buffered end&#x27;, self._path)
+        self.emit(&#x27;end&#x27;)
+      } else if (c === CLOSE) {
+        // console.error(&#x27;FR Read emitting buffered close&#x27;, self._path)
+        self.emit(&#x27;close&#x27;)
+      } else {
+        // console.error(&#x27;FR Read emitting buffered data&#x27;, self._path)
+        self.emit(&#x27;data&#x27;, c)
+      }
+
+      if (self._paused) {
+        // console.error(&#x27;FR Read Re-pausing at &#x27;+i, self._path)
+        self._buffer = buf.slice(i)
+        return
+      }
+    }
+    self._buffer.length = 0
+  }
+// console.error(&#x22;FR _read done&#x22;)
+// that&#x27;s about all there is to it.
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+this._remaining -= c.length
+
+// put it on the stack.
+var ql = this._queueLen
+this._queue.push(c)
+this._queueLen ++
+
+this.<span class="apidocCodeKeywordSpan">_read</span>()
+
+// either paused, or buffered
+if (this._paused || ql &#x3e; 0) {
+  this._needDrain = true
+  return false
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Parse.super_.File.prototype.pause" id="apidoc.element.tar.Parse.super_.File.prototype.pause">
+        function <span class="apidocSignatureSpan">tar.Parse.super_.File.prototype.</span>pause
+        <span class="apidocSignatureSpan">(who)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">pause = function (who) {
+  var self = this
+  // console.error(&#x27;FR Pause&#x27;, self._path)
+  if (self._paused) return
+  who = who || self
+  self._paused = true
+  if (self._stream) self._stream.pause()
+  self.emit(&#x27;pause&#x27;, who)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Parse.super_.File.prototype.resume" id="apidoc.element.tar.Parse.super_.File.prototype.resume">
+        function <span class="apidocSignatureSpan">tar.Parse.super_.File.prototype.</span>resume
+        <span class="apidocSignatureSpan">(who)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">resume = function (who) {
+  var self = this
+  // console.error(&#x27;FR Resume&#x27;, self._path)
+  if (!self._paused) return
+  who = who || self
+  self.emit(&#x27;resume&#x27;, who)
+  self._paused = false
+  if (self._stream) self._stream.resume()
+  self._read()
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.tar.Parse.super_.Link.prototype" id="apidoc.module.tar.Parse.super_.Link.prototype">module tar.Parse.super_.Link.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Parse.super_.Link.prototype._read" id="apidoc.element.tar.Parse.super_.Link.prototype._read">
+        function <span class="apidocSignatureSpan">tar.Parse.super_.Link.prototype.</span>_read
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_read = function () {
+  var self = this
+  if (self._paused) return
+  // basically just a no-op, since we got all the info we need
+  // from the _stat method
+  if (!self._ended) {
+    self.emit(&#x27;end&#x27;)
+    self.emit(&#x27;close&#x27;)
+    self._ended = true
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+this._remaining -= c.length
+
+// put it on the stack.
+var ql = this._queueLen
+this._queue.push(c)
+this._queueLen ++
+
+this.<span class="apidocCodeKeywordSpan">_read</span>()
+
+// either paused, or buffered
+if (this._paused || ql &#x3e; 0) {
+  this._needDrain = true
+  return false
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Parse.super_.Link.prototype._stat" id="apidoc.element.tar.Parse.super_.Link.prototype._stat">
+        function <span class="apidocSignatureSpan">tar.Parse.super_.Link.prototype.</span>_stat
+        <span class="apidocSignatureSpan">(currentStat)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_stat = function (currentStat) {
+  var self = this
+  fs.readlink(self._path, function (er, linkpath) {
+    if (er) return self.error(er)
+    self.linkpath = self.props.linkpath = linkpath
+    self.emit(&#x27;linkpath&#x27;, linkpath)
+    Reader.prototype._stat.call(self, currentStat)
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.tar.Parse.super_.Proxy.prototype" id="apidoc.module.tar.Parse.super_.Proxy.prototype">module tar.Parse.super_.Proxy.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Parse.super_.Proxy.prototype._addProxy" id="apidoc.element.tar.Parse.super_.Proxy.prototype._addProxy">
+        function <span class="apidocSignatureSpan">tar.Parse.super_.Proxy.prototype.</span>_addProxy
+        <span class="apidocSignatureSpan">(proxy)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_addProxy = function (proxy) {
+  var self = this
+  if (self._proxyTarget) {
+    return self.error(&#x27;proxy already set&#x27;)
+  }
+
+  self._proxyTarget = proxy
+  proxy._proxy = self
+
+  ;[
+    &#x27;error&#x27;,
+    &#x27;data&#x27;,
+    &#x27;end&#x27;,
+    &#x27;close&#x27;,
+    &#x27;linkpath&#x27;,
+    &#x27;entry&#x27;,
+    &#x27;entryEnd&#x27;,
+    &#x27;child&#x27;,
+    &#x27;childEnd&#x27;,
+    &#x27;warn&#x27;,
+    &#x27;stat&#x27;
+  ].forEach(function (ev) {
+    // console.error(&#x27;~~ proxy event&#x27;, ev, self.path)
+    proxy.on(ev, self.emit.bind(self, ev))
+  })
+
+  self.emit(&#x27;proxy&#x27;, proxy)
+
+  proxy.on(&#x27;ready&#x27;, function () {
+    // console.error(&#x22;~~ proxy is ready!&#x22;, self.path)
+    self.ready = true
+    self.emit(&#x27;ready&#x27;)
+  })
+
+  var calls = self._buffer
+  self._buffer.length = 0
+  calls.forEach(function (c) {
+    proxy[c[0]].apply(proxy, c[1])
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Parse.super_.Proxy.prototype._stat" id="apidoc.element.tar.Parse.super_.Proxy.prototype._stat">
+        function <span class="apidocSignatureSpan">tar.Parse.super_.Proxy.prototype.</span>_stat
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_stat = function () {
+  var self = this
+  var props = self.props
+  // stat the thing to see what the proxy should be.
+  var stat = props.follow ? &#x27;stat&#x27; : &#x27;lstat&#x27;
+
+  fs[stat](props.path, function (er, current) {
+    var type
+    if (er || !current) {
+      type = &#x27;File&#x27;
+    } else {
+      type = getType(current)
+    }
+
+    props[type] = true
+    props.type = self.type = type
+
+    self._old = current
+    self._addProxy(Reader(props, current))
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Parse.super_.Proxy.prototype.pause" id="apidoc.element.tar.Parse.super_.Proxy.prototype.pause">
+        function <span class="apidocSignatureSpan">tar.Parse.super_.Proxy.prototype.</span>pause
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">pause = function () {
+  return this._proxyTarget ? this._proxyTarget.pause() : false
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Parse.super_.Proxy.prototype.resume" id="apidoc.element.tar.Parse.super_.Proxy.prototype.resume">
+        function <span class="apidocSignatureSpan">tar.Parse.super_.Proxy.prototype.</span>resume
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">resume = function () {
+  return this._proxyTarget ? this._proxyTarget.resume() : false
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.tar.Parse.super_.prototype" id="apidoc.module.tar.Parse.super_.prototype">module tar.Parse.super_.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Parse.super_.prototype._read" id="apidoc.element.tar.Parse.super_.prototype._read">
+        function <span class="apidocSignatureSpan">tar.Parse.super_.prototype.</span>_read
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_read = function () {
+  this.error(&#x27;Cannot read unknown type: &#x27; + this.type)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+this._remaining -= c.length
+
+// put it on the stack.
+var ql = this._queueLen
+this._queue.push(c)
+this._queueLen ++
+
+this.<span class="apidocCodeKeywordSpan">_read</span>()
+
+// either paused, or buffered
+if (this._paused || ql &#x3e; 0) {
+  this._needDrain = true
+  return false
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Parse.super_.prototype._stat" id="apidoc.element.tar.Parse.super_.prototype._stat">
+        function <span class="apidocSignatureSpan">tar.Parse.super_.prototype.</span>_stat
+        <span class="apidocSignatureSpan">(currentStat)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_stat = function (currentStat) {
+  var self = this
+  var props = self.props
+  var stat = props.follow ? &#x27;stat&#x27; : &#x27;lstat&#x27;
+  // console.error(&#x22;Reader._stat&#x22;, self._path, currentStat)
+  if (currentStat) process.nextTick(statCb.bind(null, null, currentStat))
+  else fs[stat](self._path, statCb)
+
+  function statCb (er, props_) {
+    // console.error(&#x22;Reader._stat, statCb&#x22;, self._path, props_, props_.nlink)
+    if (er) return self.error(er)
+
+    Object.keys(props_).forEach(function (k) {
+      props[k] = props_[k]
+    })
+
+    // if it&#x27;s not the expected size, then abort here.
+    if (undefined !== self.size &#x26;&#x26; props.size !== self.size) {
+      return self.error(&#x27;incorrect size&#x27;)
+    }
+    self.size = props.size
+
+    var type = getType(props)
+    var handleHardlinks = props.hardlinks !== false
+
+    // special little thing for handling hardlinks.
+    if (handleHardlinks &#x26;&#x26; type !== &#x27;Directory&#x27; &#x26;&#x26; props.nlink &#x26;&#x26; props.nlink &#x3e; 1) {
+      var k = props.dev + &#x27;:&#x27; + props.ino
+      // console.error(&#x22;Reader has nlink&#x22;, self._path, k)
+      if (hardLinks[k] === self._path || !hardLinks[k]) {
+        hardLinks[k] = self._path
+      } else {
+        // switch into hardlink mode.
+        type = self.type = self.props.type = &#x27;Link&#x27;
+        self.Link = self.props.Link = true
+        self.linkpath = self.props.linkpath = hardLinks[k]
+        // console.error(&#x22;Hardlink detected, switching mode&#x22;, self._path, self.linkpath)
+        // Setting __proto__ would arguably be the &#x22;correct&#x22;
+        // approach here, but that just seems too wrong.
+        self._stat = self._read = LinkReader.prototype._read
+      }
+    }
+
+    if (self.type &#x26;&#x26; self.type !== type) {
+      self.error(&#x27;Unexpected type: &#x27; + type)
+    }
+
+    // if the filter doesn&#x27;t pass, then just skip over this one.
+    // still have to emit end so that dir-walking can move on.
+    if (self.filter) {
+      var who = self._proxy || self
+      // special handling for ProxyReaders
+      if (!self.filter.call(who, who, props)) {
+        if (!self._disowned) {
+          self.abort()
+          self.emit(&#x27;end&#x27;)
+          self.emit(&#x27;close&#x27;)
+        }
+        return
+      }
+    }
+
+    // last chance to abort or disown before the flow starts!
+    var events = [&#x27;_stat&#x27;, &#x27;stat&#x27;, &#x27;ready&#x27;]
+    var e = 0
+    ;(function go () {
+      if (self._aborted) {
+        self.emit(&#x27;end&#x27;)
+        self.emit(&#x27;close&#x27;)
+        return
+      }
+
+      if (self._paused &#x26;&#x26; self.type !== &#x27;Directory&#x27;) {
+        self.once(&#x27;resume&#x27;, go)
+        return
+      }
+
+      var ev = events[e++]
+      if (!ev) {
+        return self._read()
+      }
+      self.emit(ev, props)
+      go()
+    })()
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Parse.super_.prototype.pause" id="apidoc.element.tar.Parse.super_.prototype.pause">
+        function <span class="apidocSignatureSpan">tar.Parse.super_.prototype.</span>pause
+        <span class="apidocSignatureSpan">(who)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">pause = function (who) {
+  this._paused = true
+  who = who || this
+  this.emit(&#x27;pause&#x27;, who)
+  if (this._stream) this._stream.pause(who)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Parse.super_.prototype.pipe" id="apidoc.element.tar.Parse.super_.prototype.pipe">
+        function <span class="apidocSignatureSpan">tar.Parse.super_.prototype.</span>pipe
+        <span class="apidocSignatureSpan">(dest)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">pipe = function (dest) {
+  var self = this
+  if (typeof dest.add === &#x27;function&#x27;) {
+    // piping to a multi-compatible, and we&#x27;ve got directory entries.
+    self.on(&#x27;entry&#x27;, function (entry) {
+      var ret = dest.add(entry)
+      if (ret === false) {
+        self.pause()
+      }
+    })
+  }
+
+  // console.error(&#x22;R Pipe apply Stream Pipe&#x22;)
+  return Stream.prototype.pipe.apply(this, arguments)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Parse.super_.prototype.resume" id="apidoc.element.tar.Parse.super_.prototype.resume">
+        function <span class="apidocSignatureSpan">tar.Parse.super_.prototype.</span>resume
+        <span class="apidocSignatureSpan">(who)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">resume = function (who) {
+  this._paused = false
+  who = who || this
+  this.emit(&#x27;resume&#x27;, who)
+  if (this._stream) this._stream.resume(who)
+  this._read()
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.tar.Parse.super_.super_.prototype" id="apidoc.module.tar.Parse.super_.super_.prototype">module tar.Parse.super_.super_.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Parse.super_.super_.prototype.abort" id="apidoc.element.tar.Parse.super_.super_.prototype.abort">
+        function <span class="apidocSignatureSpan">tar.Parse.super_.super_.prototype.</span>abort
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">abort = function () {
+  this._aborted = true
+  this.emit(&#x27;abort&#x27;)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Parse.super_.super_.prototype.destroy" id="apidoc.element.tar.Parse.super_.super_.prototype.destroy">
+        function <span class="apidocSignatureSpan">tar.Parse.super_.super_.prototype.</span>destroy
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">destroy = function () {}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Parse.super_.super_.prototype.error" id="apidoc.element.tar.Parse.super_.super_.prototype.error">
+        function <span class="apidocSignatureSpan">tar.Parse.super_.super_.prototype.</span>error
+        <span class="apidocSignatureSpan">(msg, code, th)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">error = function (msg, code, th) {
+  var er = decorate(msg, code, this)
+  if (th) throw er
+  else this.emit(&#x27;error&#x27;, er)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+  me.on(&#x22;pipe&#x22;, function () {
+    me._process()
+  })
+}
+
+EntryWriter.prototype.write = function (c) {
+  // console.<span class="apidocCodeKeywordSpan">error</span>(&#x22;.. ew write&#x22;)
+  if (this._ended) return this.emit(&#x22;error&#x22;, new Error(&#x22;write after end&#x22;))
+  this._buffer.push(c)
+  this._process()
+  this._needDrain = this._buffer.length &#x3e; 0
+  return !this._needDrain
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Parse.super_.super_.prototype.info" id="apidoc.element.tar.Parse.super_.super_.prototype.info">
+        function <span class="apidocSignatureSpan">tar.Parse.super_.super_.prototype.</span>info
+        <span class="apidocSignatureSpan">(msg, code)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">info = function (msg, code) {
+  this.emit(&#x27;info&#x27;, msg, code)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Parse.super_.super_.prototype.on" id="apidoc.element.tar.Parse.super_.super_.prototype.on">
+        function <span class="apidocSignatureSpan">tar.Parse.super_.super_.prototype.</span>on
+        <span class="apidocSignatureSpan">(ev, fn)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">on = function (ev, fn) {
+  if (ev === &#x27;ready&#x27; &#x26;&#x26; this.ready) {
+    process.nextTick(fn.bind(this))
+  } else {
+    Stream.prototype.on.call(this, ev, fn)
+  }
+  return this
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  , Entry = require(&#x22;./entry.js&#x22;)
+
+function BufferEntry () {
+  Entry.apply(this, arguments)
+  this._buffer = new Buffer(this.props.size)
+  this._offset = 0
+  this.body = &#x22;&#x22;
+  this.<span class="apidocCodeKeywordSpan">on</span>(&#x22;end&#x22;, function () {
+    this.body = this._buffer.toString().slice(0, -1)
+  })
+}
+
+inherits(BufferEntry, Entry)
+
+// collect the bytes as they come in.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.Parse.super_.super_.prototype.warn" id="apidoc.element.tar.Parse.super_.super_.prototype.warn">
+        function <span class="apidocSignatureSpan">tar.Parse.super_.super_.prototype.</span>warn
+        <span class="apidocSignatureSpan">(msg, code)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">warn = function (msg, code) {
+  var self = this
+  var er = decorate(msg, code, self)
+  if (!self.listeners(&#x27;warn&#x27;)) {
+    console.error(&#x27;%s %s\n&#x27; +
+    &#x27;path = %s\n&#x27; +
+    &#x27;syscall = %s\n&#x27; +
+    &#x27;fstream_type = %s\n&#x27; +
+    &#x27;fstream_path = %s\n&#x27; +
+    &#x27;fstream_unc_path = %s\n&#x27; +
+    &#x27;fstream_class = %s\n&#x27; +
+    &#x27;fstream_stack =\n%s\n&#x27;,
+      code || &#x27;UNKNOWN&#x27;,
+      er.stack,
+      er.path,
+      er.syscall,
+      er.fstream_type,
+      er.fstream_path,
+      er.fstream_unc_path,
+      er.fstream_class,
+      er.fstream_stack.join(&#x27;\n&#x27;))
+  } else {
+    self.emit(&#x27;warn&#x27;, er)
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.tar.buffer_entry" id="apidoc.module.tar.buffer_entry">module tar.buffer_entry</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.tar.buffer_entry.buffer_entry" id="apidoc.element.tar.buffer_entry.buffer_entry">
+        function <span class="apidocSignatureSpan">tar.</span>buffer_entry
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function BufferEntry() {
+  Entry.apply(this, arguments)
+  this._buffer = new Buffer(this.props.size)
+  this._offset = 0
+  this.body = &#x22;&#x22;
+  this.on(&#x22;end&#x22;, function () {
+    this.body = this._buffer.toString().slice(0, -1)
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.buffer_entry.super_" id="apidoc.element.tar.buffer_entry.super_">
+        function <span class="apidocSignatureSpan">tar.buffer_entry.</span>super_
+        <span class="apidocSignatureSpan">(header, extended, global)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Entry(header, extended, global) {
+  Stream.call(this)
+  this.readable = true
+  this.writable = true
+
+  this._needDrain = false
+  this._paused = false
+  this._reading = false
+  this._ending = false
+  this._ended = false
+  this._remaining = 0
+  this._abort = false
+  this._queue = []
+  this._index = 0
+  this._queueLen = 0
+
+  this._read = this._read.bind(this)
+
+  this.props = {}
+  this._header = header
+  this._extended = extended || {}
+
+  // globals can change throughout the course of
+  // a file parse operation.  Freeze it at its current state.
+  this._global = {}
+  var me = this
+  Object.keys(global || {}).forEach(function (g) {
+    me._global[g] = global[g]
+  })
+
+  this._setProps()
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.tar.buffer_entry.prototype" id="apidoc.module.tar.buffer_entry.prototype">module tar.buffer_entry.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.tar.buffer_entry.prototype.write" id="apidoc.element.tar.buffer_entry.prototype.write">
+        function <span class="apidocSignatureSpan">tar.buffer_entry.prototype.</span>write
+        <span class="apidocSignatureSpan">(c)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">write = function (c) {
+  c.copy(this._buffer, this._offset)
+  this._offset += c.length
+  Entry.prototype.write.call(this, c)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  var buf = this._buffer
+  for (var i = 0; i &#x3c; buf.length; i ++) {
+// console.error(&#x22;.. .. .. i=%d&#x22;, i)
+
+var c = buf[i]
+
+if (c === EOF) this._stream.end()
+else this._stream.<span class="apidocCodeKeywordSpan">write</span>(c)
+
+if (this._paused) {
+  // console.error(&#x22;.. .. .. paused mid-emission&#x22;)
+  this._processing = false
+  if (i &#x3c; buf.length) {
+    this._needDrain = true
+    this._buffer = buf.slice(i + 1)
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.tar.entry" id="apidoc.module.tar.entry">module tar.entry</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.tar.entry.entry" id="apidoc.element.tar.entry.entry">
+        function <span class="apidocSignatureSpan">tar.</span>entry
+        <span class="apidocSignatureSpan">(header, extended, global)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Entry(header, extended, global) {
+  Stream.call(this)
+  this.readable = true
+  this.writable = true
+
+  this._needDrain = false
+  this._paused = false
+  this._reading = false
+  this._ending = false
+  this._ended = false
+  this._remaining = 0
+  this._abort = false
+  this._queue = []
+  this._index = 0
+  this._queueLen = 0
+
+  this._read = this._read.bind(this)
+
+  this.props = {}
+  this._header = header
+  this._extended = extended || {}
+
+  // globals can change throughout the course of
+  // a file parse operation.  Freeze it at its current state.
+  this._global = {}
+  var me = this
+  Object.keys(global || {}).forEach(function (g) {
+    me._global[g] = global[g]
+  })
+
+  this._setProps()
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.entry.super_" id="apidoc.element.tar.entry.super_">
+        function <span class="apidocSignatureSpan">tar.entry.</span>super_
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Stream() {
+  EE.call(this);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.tar.entry.prototype" id="apidoc.module.tar.entry.prototype">module tar.entry.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.tar.entry.prototype._read" id="apidoc.element.tar.entry.prototype._read">
+        function <span class="apidocSignatureSpan">tar.entry.prototype.</span>_read
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_read = function () {
+  // console.error(&#x22;    Tar Entry _read&#x22;, this.path)
+
+  if (this._paused || this._reading || this._ended) return
+
+  // set this flag so that event handlers don&#x27;t inadvertently
+  // get multiple _read() calls running.
+  this._reading = true
+
+  // have any data to emit?
+  while (this._index &#x3c; this._queueLen &#x26;&#x26; !this._paused) {
+    var chunk = this._queue[this._index ++]
+    this.emit(&#x22;data&#x22;, chunk)
+  }
+
+  // check if we&#x27;re drained
+  if (this._index &#x3e;= this._queueLen) {
+    this._queue.length = this._queueLen = this._index = 0
+    if (this._needDrain) {
+      this._needDrain = false
+      this.emit(&#x22;drain&#x22;)
+    }
+    if (this._ending) {
+      this._ended = true
+      this.emit(&#x22;end&#x22;)
+    }
+  }
+
+  // if the queue gets too big, then pluck off whatever we can.
+  // this should be fairly rare.
+  var mql = this._maxQueueLen
+  if (this._queueLen &#x3e; mql &#x26;&#x26; this._index &#x3e; 0) {
+    mql = Math.min(this._index, mql)
+    this._index -= mql
+    this._queueLen -= mql
+    this._queue = this._queue.slice(mql)
+  }
+
+  this._reading = false
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+this._remaining -= c.length
+
+// put it on the stack.
+var ql = this._queueLen
+this._queue.push(c)
+this._queueLen ++
+
+this.<span class="apidocCodeKeywordSpan">_read</span>()
+
+// either paused, or buffered
+if (this._paused || ql &#x3e; 0) {
+  this._needDrain = true
+  return false
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.entry.prototype._setProps" id="apidoc.element.tar.entry.prototype._setProps">
+        function <span class="apidocSignatureSpan">tar.entry.prototype.</span>_setProps
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_setProps = function () {
+  // props = extended-&#x3e;global-&#x3e;header-&#x3e;{}
+  var header = this._header
+    , extended = this._extended
+    , global = this._global
+    , props = this.props
+
+  // first get the values from the normal header.
+  var fields = tar.fields
+  for (var f = 0; fields[f] !== null; f ++) {
+    var field = fields[f]
+      , val = header[field]
+    if (typeof val !== &#x22;undefined&#x22;) props[field] = val
+  }
+
+  // next, the global header for this file.
+  // numeric values, etc, will have already been parsed.
+  ;[global, extended].forEach(function (p) {
+    Object.keys(p).forEach(function (f) {
+      if (typeof p[f] !== &#x22;undefined&#x22;) props[f] = p[f]
+    })
+  })
+
+  // no nulls allowed in path or linkpath
+  ;[&#x22;path&#x22;, &#x22;linkpath&#x22;].forEach(function (p) {
+    if (props.hasOwnProperty(p)) {
+      props[p] = props[p].split(&#x22;\0&#x22;)[0]
+    }
+  })
+
+
+  // set date fields to be a proper date
+  ;[&#x22;mtime&#x22;, &#x22;ctime&#x22;, &#x22;atime&#x22;].forEach(function (p) {
+    if (props.hasOwnProperty(p)) {
+      props[p] = new Date(props[p] * 1000)
+    }
+  })
+
+  // set the type so that we know what kind of file to create
+  var type
+  switch (tar.types[props.type]) {
+    case &#x22;OldFile&#x22;:
+    case &#x22;ContiguousFile&#x22;:
+      type = &#x22;File&#x22;
+      break
+
+    case &#x22;GNUDumpDir&#x22;:
+      type = &#x22;Directory&#x22;
+      break
+
+    case undefined:
+      type = &#x22;Unknown&#x22;
+      break
+
+    case &#x22;Link&#x22;:
+    case &#x22;SymbolicLink&#x22;:
+    case &#x22;CharacterDevice&#x22;:
+    case &#x22;BlockDevice&#x22;:
+    case &#x22;Directory&#x22;:
+    case &#x22;FIFO&#x22;:
+    default:
+      type = tar.types[props.type]
+  }
+
+  this.type = type
+  this.path = props.path
+  this.size = props.size
+
+  // size is special, since it signals when the file needs to end.
+  this._remaining = props.size
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+// a file parse operation.  Freeze it at its current state.
+this._global = {}
+var me = this
+Object.keys(global || {}).forEach(function (g) {
+  me._global[g] = global[g]
+})
+
+this.<span class="apidocCodeKeywordSpan">_setProps</span>()
+}
+
+inherits(Entry, Stream)
+
+Entry.prototype.write = function (c) {
+if (this._ending) this.error(&#x22;write() after end()&#x22;, null, true)
+if (this._remaining === 0) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.entry.prototype.abort" id="apidoc.element.tar.entry.prototype.abort">
+        function <span class="apidocSignatureSpan">tar.entry.prototype.</span>abort
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">abort = function (){
+  this._abort = true
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.entry.prototype.end" id="apidoc.element.tar.entry.prototype.end">
+        function <span class="apidocSignatureSpan">tar.entry.prototype.</span>end
+        <span class="apidocSignatureSpan">(c)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">end = function (c) {
+  if (c) this.write(c)
+  this._ending = true
+  this._read()
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+EntryWriter.prototype.add = function (entry) {
+// console.error(&#x22;.. ew add&#x22;)
+if (!this.parent) return this.emit(&#x22;error&#x22;, new Error(&#x22;no parent&#x22;))
+
+// make sure that the _header and such is emitted, and clear out
+// the _currentEntry link on the parent.
+if (!this._ended) this.<span class="apidocCodeKeywordSpan">end</span>()
+
+return this.parent.add(entry)
+}
+
+EntryWriter.prototype._header = function () {
+// console.error(&#x22;.. ew header&#x22;)
+if (this._didHeader) return
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.entry.prototype.pause" id="apidoc.element.tar.entry.prototype.pause">
+        function <span class="apidocSignatureSpan">tar.entry.prototype.</span>pause
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">pause = function () {
+  this._paused = true
+  this.emit(&#x22;pause&#x22;)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.entry.prototype.resume" id="apidoc.element.tar.entry.prototype.resume">
+        function <span class="apidocSignatureSpan">tar.entry.prototype.</span>resume
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">resume = function () {
+  // console.error(&#x22;    Tar Entry resume&#x22;, this.path)
+  this.emit(&#x22;resume&#x22;)
+  this._paused = false
+  this._read()
+  return this._queueLen - this._index &#x3e; 1
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.entry.prototype.write" id="apidoc.element.tar.entry.prototype.write">
+        function <span class="apidocSignatureSpan">tar.entry.prototype.</span>write
+        <span class="apidocSignatureSpan">(c)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">write = function (c) {
+  if (this._ending) this.error(&#x22;write() after end()&#x22;, null, true)
+  if (this._remaining === 0) {
+    this.error(&#x22;invalid bytes past eof&#x22;)
+  }
+
+  // often we&#x27;ll get a bunch of \0 at the end of the last write,
+  // since chunks will always be 512 bytes when reading a tarball.
+  if (c.length &#x3e; this._remaining) {
+    c = c.slice(0, this._remaining)
+  }
+  this._remaining -= c.length
+
+  // put it on the stack.
+  var ql = this._queueLen
+  this._queue.push(c)
+  this._queueLen ++
+
+  this._read()
+
+  // either paused, or buffered
+  if (this._paused || ql &#x3e; 0) {
+    this._needDrain = true
+    return false
+  }
+
+  return true
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  var buf = this._buffer
+  for (var i = 0; i &#x3c; buf.length; i ++) {
+// console.error(&#x22;.. .. .. i=%d&#x22;, i)
+
+var c = buf[i]
+
+if (c === EOF) this._stream.end()
+else this._stream.<span class="apidocCodeKeywordSpan">write</span>(c)
+
+if (this._paused) {
+  // console.error(&#x22;.. .. .. paused mid-emission&#x22;)
+  this._processing = false
+  if (i &#x3c; buf.length) {
+    this._needDrain = true
+    this._buffer = buf.slice(i + 1)
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.tar.entry_writer" id="apidoc.module.tar.entry_writer">module tar.entry_writer</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.tar.entry_writer.entry_writer" id="apidoc.element.tar.entry_writer.entry_writer">
+        function <span class="apidocSignatureSpan">tar.</span>entry_writer
+        <span class="apidocSignatureSpan">(props)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function EntryWriter(props) {
+  var me = this
+
+  if (!(me instanceof EntryWriter)) {
+    return new EntryWriter(props)
+  }
+
+  Stream.apply(this)
+
+  me.writable = true
+  me.readable = true
+
+  me._stream = new BlockStream(512)
+
+  me._stream.on(&#x22;data&#x22;, function (c) {
+    me.emit(&#x22;data&#x22;, c)
+  })
+
+  me._stream.on(&#x22;drain&#x22;, function () {
+    me.emit(&#x22;drain&#x22;)
+  })
+
+  me._stream.on(&#x22;end&#x22;, function () {
+    me.emit(&#x22;end&#x22;)
+    me.emit(&#x22;close&#x22;)
+  })
+
+  me.props = props
+  if (props.type === &#x22;Directory&#x22;) {
+    props.size = 0
+  }
+  props.ustar = &#x22;ustar\0&#x22;
+  props.ustarver = &#x22;00&#x22;
+  me.path = props.path
+
+  me._buffer = []
+  me._didHeader = false
+  me._meta = false
+
+  me.on(&#x22;pipe&#x22;, function () {
+    me._process()
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.entry_writer.super_" id="apidoc.element.tar.entry_writer.super_">
+        function <span class="apidocSignatureSpan">tar.entry_writer.</span>super_
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Stream() {
+  EE.call(this);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.tar.entry_writer.prototype" id="apidoc.module.tar.entry_writer.prototype">module tar.entry_writer.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.tar.entry_writer.prototype._header" id="apidoc.element.tar.entry_writer.prototype._header">
+        function <span class="apidocSignatureSpan">tar.entry_writer.prototype.</span>_header
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_header = function () {
+  // console.error(&#x22;.. ew header&#x22;)
+  if (this._didHeader) return
+  this._didHeader = true
+
+  var headerBlock = TarHeader.encode(this.props)
+
+  if (this.props.needExtended &#x26;&#x26; !this._meta) {
+    var me = this
+
+    ExtendedHeaderWriter = ExtendedHeaderWriter ||
+      require(&#x22;./extended-header-writer.js&#x22;)
+
+    ExtendedHeaderWriter(this.props)
+      .on(&#x22;data&#x22;, function (c) {
+        me.emit(&#x22;data&#x22;, c)
+      })
+      .on(&#x22;error&#x22;, function (er) {
+        me.emit(&#x22;error&#x22;, er)
+      })
+      .end()
+  }
+
+  // console.error(&#x22;.. .. ew headerBlock emitting&#x22;)
+  this.emit(&#x22;data&#x22;, headerBlock)
+  this.emit(&#x22;header&#x22;)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+this.emit(&#x22;data&#x22;, headerBlock)
+this.emit(&#x22;header&#x22;)
+}
+
+EntryWriter.prototype._process = function () {
+// console.error(&#x22;.. .. ew process&#x22;)
+if (!this._didHeader &#x26;&#x26; !this._meta) {
+  this.<span class="apidocCodeKeywordSpan">_header</span>()
+}
+
+if (this._paused || this._processing) {
+  // console.error(&#x22;.. .. .. paused=%j, processing=%j&#x22;, this._paused, this._processing)
+  return
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.entry_writer.prototype._process" id="apidoc.element.tar.entry_writer.prototype._process">
+        function <span class="apidocSignatureSpan">tar.entry_writer.prototype.</span>_process
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_process = function () {
+  // console.error(&#x22;.. .. ew process&#x22;)
+  if (!this._didHeader &#x26;&#x26; !this._meta) {
+    this._header()
+  }
+
+  if (this._paused || this._processing) {
+    // console.error(&#x22;.. .. .. paused=%j, processing=%j&#x22;, this._paused, this._processing)
+    return
+  }
+
+  this._processing = true
+
+  var buf = this._buffer
+  for (var i = 0; i &#x3c; buf.length; i ++) {
+    // console.error(&#x22;.. .. .. i=%d&#x22;, i)
+
+    var c = buf[i]
+
+    if (c === EOF) this._stream.end()
+    else this._stream.write(c)
+
+    if (this._paused) {
+      // console.error(&#x22;.. .. .. paused mid-emission&#x22;)
+      this._processing = false
+      if (i &#x3c; buf.length) {
+        this._needDrain = true
+        this._buffer = buf.slice(i + 1)
+      }
+      return
+    }
+  }
+
+  // console.error(&#x22;.. .. .. emitted&#x22;)
+  this._buffer.length = 0
+  this._processing = false
+
+  // console.error(&#x22;.. .. .. emitting drain&#x22;)
+  this.emit(&#x22;drain&#x22;)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+me.path = props.path
+
+me._buffer = []
+me._didHeader = false
+me._meta = false
+
+me.on(&#x22;pipe&#x22;, function () {
+  me.<span class="apidocCodeKeywordSpan">_process</span>()
+})
+}
+
+EntryWriter.prototype.write = function (c) {
+// console.error(&#x22;.. ew write&#x22;)
+if (this._ended) return this.emit(&#x22;error&#x22;, new Error(&#x22;write after end&#x22;))
+this._buffer.push(c)
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.entry_writer.prototype.add" id="apidoc.element.tar.entry_writer.prototype.add">
+        function <span class="apidocSignatureSpan">tar.entry_writer.prototype.</span>add
+        <span class="apidocSignatureSpan">(entry)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">add = function (entry) {
+  // console.error(&#x22;.. ew add&#x22;)
+  if (!this.parent) return this.emit(&#x22;error&#x22;, new Error(&#x22;no parent&#x22;))
+
+  // make sure that the _header and such is emitted, and clear out
+  // the _currentEntry link on the parent.
+  if (!this._ended) this.end()
+
+  return this.parent.add(entry)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+// console.error(&#x22;.. ew add&#x22;)
+if (!this.parent) return this.emit(&#x22;error&#x22;, new Error(&#x22;no parent&#x22;))
+
+// make sure that the _header and such is emitted, and clear out
+// the _currentEntry link on the parent.
+if (!this._ended) this.end()
+
+return this.parent.<span class="apidocCodeKeywordSpan">add</span>(entry)
+}
+
+EntryWriter.prototype._header = function () {
+// console.error(&#x22;.. ew header&#x22;)
+if (this._didHeader) return
+this._didHeader = true
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.entry_writer.prototype.destroy" id="apidoc.element.tar.entry_writer.prototype.destroy">
+        function <span class="apidocSignatureSpan">tar.entry_writer.prototype.</span>destroy
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">destroy = function () {}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.entry_writer.prototype.end" id="apidoc.element.tar.entry_writer.prototype.end">
+        function <span class="apidocSignatureSpan">tar.entry_writer.prototype.</span>end
+        <span class="apidocSignatureSpan">(c)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">end = function (c) {
+  // console.error(&#x22;.. ew end&#x22;)
+  if (c) this._buffer.push(c)
+  this._buffer.push(EOF)
+  this._ended = true
+  this._process()
+  this._needDrain = this._buffer.length &#x3e; 0
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+EntryWriter.prototype.add = function (entry) {
+// console.error(&#x22;.. ew add&#x22;)
+if (!this.parent) return this.emit(&#x22;error&#x22;, new Error(&#x22;no parent&#x22;))
+
+// make sure that the _header and such is emitted, and clear out
+// the _currentEntry link on the parent.
+if (!this._ended) this.<span class="apidocCodeKeywordSpan">end</span>()
+
+return this.parent.add(entry)
+}
+
+EntryWriter.prototype._header = function () {
+// console.error(&#x22;.. ew header&#x22;)
+if (this._didHeader) return
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.entry_writer.prototype.pause" id="apidoc.element.tar.entry_writer.prototype.pause">
+        function <span class="apidocSignatureSpan">tar.entry_writer.prototype.</span>pause
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">pause = function () {
+  // console.error(&#x22;.. ew pause&#x22;)
+  this._paused = true
+  this.emit(&#x22;pause&#x22;)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.entry_writer.prototype.resume" id="apidoc.element.tar.entry_writer.prototype.resume">
+        function <span class="apidocSignatureSpan">tar.entry_writer.prototype.</span>resume
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">resume = function () {
+  // console.error(&#x22;.. ew resume&#x22;)
+  this._paused = false
+  this.emit(&#x22;resume&#x22;)
+  this._process()
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.entry_writer.prototype.write" id="apidoc.element.tar.entry_writer.prototype.write">
+        function <span class="apidocSignatureSpan">tar.entry_writer.prototype.</span>write
+        <span class="apidocSignatureSpan">(c)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">write = function (c) {
+  // console.error(&#x22;.. ew write&#x22;)
+  if (this._ended) return this.emit(&#x22;error&#x22;, new Error(&#x22;write after end&#x22;))
+  this._buffer.push(c)
+  this._process()
+  this._needDrain = this._buffer.length &#x3e; 0
+  return !this._needDrain
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  var buf = this._buffer
+  for (var i = 0; i &#x3c; buf.length; i ++) {
+// console.error(&#x22;.. .. .. i=%d&#x22;, i)
+
+var c = buf[i]
+
+if (c === EOF) this._stream.end()
+else this._stream.<span class="apidocCodeKeywordSpan">write</span>(c)
+
+if (this._paused) {
+  // console.error(&#x22;.. .. .. paused mid-emission&#x22;)
+  this._processing = false
+  if (i &#x3c; buf.length) {
+    this._needDrain = true
+    this._buffer = buf.slice(i + 1)
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.tar.extended_header" id="apidoc.module.tar.extended_header">module tar.extended_header</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.tar.extended_header.extended_header" id="apidoc.element.tar.extended_header.extended_header">
+        function <span class="apidocSignatureSpan">tar.</span>extended_header
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function ExtendedHeader() {
+  Entry.apply(this, arguments)
+  this.on(&#x22;data&#x22;, this._parse)
+  this.fields = {}
+  this._position = 0
+  this._fieldPos = 0
+  this._state = SIZE
+  this._sizeBuf = []
+  this._keyBuf = []
+  this._valBuf = []
+  this._size = -1
+  this._key = &#x22;&#x22;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.extended_header.super_" id="apidoc.element.tar.extended_header.super_">
+        function <span class="apidocSignatureSpan">tar.extended_header.</span>super_
+        <span class="apidocSignatureSpan">(header, extended, global)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Entry(header, extended, global) {
+  Stream.call(this)
+  this.readable = true
+  this.writable = true
+
+  this._needDrain = false
+  this._paused = false
+  this._reading = false
+  this._ending = false
+  this._ended = false
+  this._remaining = 0
+  this._abort = false
+  this._queue = []
+  this._index = 0
+  this._queueLen = 0
+
+  this._read = this._read.bind(this)
+
+  this.props = {}
+  this._header = header
+  this._extended = extended || {}
+
+  // globals can change throughout the course of
+  // a file parse operation.  Freeze it at its current state.
+  this._global = {}
+  var me = this
+  Object.keys(global || {}).forEach(function (g) {
+    me._global[g] = global[g]
+  })
+
+  this._setProps()
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.tar.extended_header.prototype" id="apidoc.module.tar.extended_header.prototype">module tar.extended_header.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.tar.extended_header.prototype._parse" id="apidoc.element.tar.extended_header.prototype._parse">
+        function <span class="apidocSignatureSpan">tar.extended_header.prototype.</span>_parse
+        <span class="apidocSignatureSpan">(c)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function parse(c) {
+  if (this._state === ERR) return
+
+  for ( var i = 0, l = c.length
+      ; i &#x3c; l
+      ; this._position++, this._fieldPos++, i++) {
+    // console.error(&#x22;top of loop, size=&#x22;+this._size)
+
+    var b = c[i]
+
+    if (this._size &#x3e;= 0 &#x26;&#x26; this._fieldPos &#x3e; this._size) {
+      error(this, &#x22;field exceeds length=&#x22;+this._size)
+      return
+    }
+
+    switch (this._state) {
+      case ERR: return
+
+      case SIZE:
+        // console.error(&#x22;parsing size, b=%d, rest=%j&#x22;, b, c.slice(i).toString())
+        if (b === space) {
+          this._state = KEY
+          // this._fieldPos = this._sizeBuf.length
+          this._size = parseInt(new Buffer(this._sizeBuf).toString(), 10)
+          this._sizeBuf.length = 0
+          continue
+        }
+        if (b &#x3c; _0 || b &#x3e; _9) {
+          error(this, &#x22;expected [&#x22; + _0 + &#x22;..&#x22; + _9 + &#x22;], got &#x22; + b)
+          return
+        }
+        this._sizeBuf.push(b)
+        continue
+
+      case KEY:
+        // can be any char except =, not &#x3e; size.
+        if (b === eq) {
+          this._state = VAL
+          this._key = new Buffer(this._keyBuf).toString()
+          if (keyTrans[this._key]) this._key = keyTrans[this._key]
+          this._keyBuf.length = 0
+          continue
+        }
+        this._keyBuf.push(b)
+        continue
+
+      case VAL:
+        // field must end with cr
+        if (this._fieldPos === this._size - 1) {
+          // console.error(&#x22;finished with &#x22;+this._key)
+          if (b !== cr) {
+            error(this, &#x22;expected \\n at end of field&#x22;)
+            return
+          }
+          var val = new Buffer(this._valBuf).toString()
+          if (numeric[this._key]) {
+            val = parseFloat(val)
+          }
+          this.fields[this._key] = val
+
+          this._valBuf.length = 0
+          this._state = SIZE
+          this._size = -1
+          this._fieldPos = -1
+          continue
+        }
+        this._valBuf.push(b)
+        continue
+    }
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.tar.extended_header_writer" id="apidoc.module.tar.extended_header_writer">module tar.extended_header_writer</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.tar.extended_header_writer.extended_header_writer" id="apidoc.element.tar.extended_header_writer.extended_header_writer">
+        function <span class="apidocSignatureSpan">tar.</span>extended_header_writer
+        <span class="apidocSignatureSpan">(props)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function ExtendedHeaderWriter(props) {
+  // console.error(&#x22;&#x3e;&#x3e; ehw ctor&#x22;)
+  var me = this
+
+  if (!(me instanceof ExtendedHeaderWriter)) {
+    return new ExtendedHeaderWriter(props)
+  }
+
+  me.fields = props
+
+  var p =
+    { path : (&#x22;PaxHeader&#x22; + path.join(&#x22;/&#x22;, props.path || &#x22;&#x22;))
+             .replace(/\\/g, &#x22;/&#x22;).substr(0, 100)
+    , mode : props.mode || 0666
+    , uid : props.uid || 0
+    , gid : props.gid || 0
+    , size : 0 // will be set later
+    , mtime : props.mtime || Date.now() / 1000
+    , type : &#x22;x&#x22;
+    , linkpath : &#x22;&#x22;
+    , ustar : &#x22;ustar\0&#x22;
+    , ustarver : &#x22;00&#x22;
+    , uname : props.uname || &#x22;&#x22;
+    , gname : props.gname || &#x22;&#x22;
+    , devmaj : props.devmaj || 0
+    , devmin : props.devmin || 0
+    }
+
+
+  EntryWriter.call(me, p)
+  // console.error(&#x22;&#x3e;&#x3e; ehw props&#x22;, me.props)
+  me.props = p
+
+  me._meta = true
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.extended_header_writer.super_" id="apidoc.element.tar.extended_header_writer.super_">
+        function <span class="apidocSignatureSpan">tar.extended_header_writer.</span>super_
+        <span class="apidocSignatureSpan">(props)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function EntryWriter(props) {
+  var me = this
+
+  if (!(me instanceof EntryWriter)) {
+    return new EntryWriter(props)
+  }
+
+  Stream.apply(this)
+
+  me.writable = true
+  me.readable = true
+
+  me._stream = new BlockStream(512)
+
+  me._stream.on(&#x22;data&#x22;, function (c) {
+    me.emit(&#x22;data&#x22;, c)
+  })
+
+  me._stream.on(&#x22;drain&#x22;, function () {
+    me.emit(&#x22;drain&#x22;)
+  })
+
+  me._stream.on(&#x22;end&#x22;, function () {
+    me.emit(&#x22;end&#x22;)
+    me.emit(&#x22;close&#x22;)
+  })
+
+  me.props = props
+  if (props.type === &#x22;Directory&#x22;) {
+    props.size = 0
+  }
+  props.ustar = &#x22;ustar\0&#x22;
+  props.ustarver = &#x22;00&#x22;
+  me.path = props.path
+
+  me._buffer = []
+  me._didHeader = false
+  me._meta = false
+
+  me.on(&#x22;pipe&#x22;, function () {
+    me._process()
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.tar.extended_header_writer.prototype" id="apidoc.module.tar.extended_header_writer.prototype">module tar.extended_header_writer.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.tar.extended_header_writer.prototype._encodeFields" id="apidoc.element.tar.extended_header_writer.prototype._encodeFields">
+        function <span class="apidocSignatureSpan">tar.extended_header_writer.prototype.</span>_encodeFields
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_encodeFields = function () {
+  // console.error(&#x22;&#x3e;&#x3e; ehw _encodeFields&#x22;)
+  this.body = []
+  if (this.fields.prefix) {
+    this.fields.path = this.fields.prefix + &#x22;/&#x22; + this.fields.path
+    this.fields.prefix = &#x22;&#x22;
+  }
+  encodeFields(this.fields, &#x22;&#x22;, this.body, this.fields.noProprietary)
+  var me = this
+  this.body.forEach(function (l) {
+    me.props.size += l.length
+  })
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+ExtendedHeaderWriter.prototype.end = function () {
+// console.error(&#x22;&#x3e;&#x3e; ehw end&#x22;)
+var me = this
+
+if (me._ended) return
+me._ended = true
+
+me.<span class="apidocCodeKeywordSpan">_encodeFields</span>()
+
+if (me.props.size === 0) {
+  // nothing to write!
+  me._ready = true
+  me._stream.end()
+  return
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.extended_header_writer.prototype.end" id="apidoc.element.tar.extended_header_writer.prototype.end">
+        function <span class="apidocSignatureSpan">tar.extended_header_writer.prototype.</span>end
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">end = function () {
+  // console.error(&#x22;&#x3e;&#x3e; ehw end&#x22;)
+  var me = this
+
+  if (me._ended) return
+  me._ended = true
+
+  me._encodeFields()
+
+  if (me.props.size === 0) {
+    // nothing to write!
+    me._ready = true
+    me._stream.end()
+    return
+  }
+
+  me._stream.write(TarHeader.encode(me.props))
+  me.body.forEach(function (l) {
+    me._stream.write(l)
+  })
+  me._ready = true
+
+  // console.error(&#x22;&#x3e;&#x3e; ehw _process calling end()&#x22;, me.props)
+  this._stream.end()
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+EntryWriter.prototype.add = function (entry) {
+// console.error(&#x22;.. ew add&#x22;)
+if (!this.parent) return this.emit(&#x22;error&#x22;, new Error(&#x22;no parent&#x22;))
+
+// make sure that the _header and such is emitted, and clear out
+// the _currentEntry link on the parent.
+if (!this._ended) this.<span class="apidocCodeKeywordSpan">end</span>()
+
+return this.parent.add(entry)
+}
+
+EntryWriter.prototype._header = function () {
+// console.error(&#x22;.. ew header&#x22;)
+if (this._didHeader) return
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.tar.global_header_writer" id="apidoc.module.tar.global_header_writer">module tar.global_header_writer</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.tar.global_header_writer.global_header_writer" id="apidoc.element.tar.global_header_writer.global_header_writer">
+        function <span class="apidocSignatureSpan">tar.</span>global_header_writer
+        <span class="apidocSignatureSpan">(props)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function GlobalHeaderWriter(props) {
+  if (!(this instanceof GlobalHeaderWriter)) {
+    return new GlobalHeaderWriter(props)
+  }
+  ExtendedHeaderWriter.call(this, props)
+  this.props.type = &#x22;g&#x22;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.global_header_writer.super_" id="apidoc.element.tar.global_header_writer.super_">
+        function <span class="apidocSignatureSpan">tar.global_header_writer.</span>super_
+        <span class="apidocSignatureSpan">(props)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function ExtendedHeaderWriter(props) {
+  // console.error(&#x22;&#x3e;&#x3e; ehw ctor&#x22;)
+  var me = this
+
+  if (!(me instanceof ExtendedHeaderWriter)) {
+    return new ExtendedHeaderWriter(props)
+  }
+
+  me.fields = props
+
+  var p =
+    { path : (&#x22;PaxHeader&#x22; + path.join(&#x22;/&#x22;, props.path || &#x22;&#x22;))
+             .replace(/\\/g, &#x22;/&#x22;).substr(0, 100)
+    , mode : props.mode || 0666
+    , uid : props.uid || 0
+    , gid : props.gid || 0
+    , size : 0 // will be set later
+    , mtime : props.mtime || Date.now() / 1000
+    , type : &#x22;x&#x22;
+    , linkpath : &#x22;&#x22;
+    , ustar : &#x22;ustar\0&#x22;
+    , ustarver : &#x22;00&#x22;
+    , uname : props.uname || &#x22;&#x22;
+    , gname : props.gname || &#x22;&#x22;
+    , devmaj : props.devmaj || 0
+    , devmin : props.devmin || 0
+    }
+
+
+  EntryWriter.call(me, p)
+  // console.error(&#x22;&#x3e;&#x3e; ehw props&#x22;, me.props)
+  me.props = p
+
+  me._meta = true
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.tar.header" id="apidoc.module.tar.header">module tar.header</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.tar.header.header" id="apidoc.element.tar.header.header">
+        function <span class="apidocSignatureSpan">tar.</span>header
+        <span class="apidocSignatureSpan">(block)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function TarHeader(block) {
+  if (!(this instanceof TarHeader)) return new TarHeader(block)
+  if (block) this.decode(block)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.header.decode" id="apidoc.element.tar.header.decode">
+        function <span class="apidocSignatureSpan">tar.header.</span>decode
+        <span class="apidocSignatureSpan">(block)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function decode(block) {
+  block = block || this.block
+  assert(Buffer.isBuffer(block) &#x26;&#x26; block.length === 512)
+
+  this.block = block
+  this.cksumValid = this.checkSum()
+
+  var prefix = null
+
+  // slice off each field.
+  for (var f = 0; fields[f] !== null; f ++) {
+    var field = fields[f]
+      , val = block.slice(fieldOffs[f], fieldEnds[f])
+
+    switch (field) {
+      case &#x22;ustar&#x22;:
+        // if not ustar, then everything after that is just padding.
+        if (val.toString() !== &#x22;ustar\0&#x22;) {
+          this.ustar = false
+          return
+        } else {
+          // console.error(&#x22;ustar:&#x22;, val, val.toString())
+          this.ustar = val.toString()
+        }
+        break
+
+      // prefix is special, since it might signal the xstar header
+      case &#x22;prefix&#x22;:
+        var atime = parseNumeric(val.slice(131, 131 + 12))
+          , ctime = parseNumeric(val.slice(131 + 12, 131 + 12 + 12))
+        if ((val[130] === 0 || val[130] === space) &#x26;&#x26;
+            typeof atime === &#x22;number&#x22; &#x26;&#x26;
+            typeof ctime === &#x22;number&#x22; &#x26;&#x26;
+            val[131 + 12] === space &#x26;&#x26;
+            val[131 + 12 + 12] === space) {
+          this.atime = atime
+          this.ctime = ctime
+          val = val.slice(0, 130)
+        }
+        prefix = val.toString(&#x22;utf8&#x22;).replace(/\0+$/, &#x22;&#x22;)
+        // console.error(&#x22;%% header reading prefix&#x22;, prefix)
+        break
+
+      // all other fields are null-padding text
+      // or a number.
+      default:
+        if (numeric[field]) {
+          this[field] = parseNumeric(val)
+        } else {
+          this[field] = val.toString(&#x22;utf8&#x22;).replace(/\0+$/, &#x22;&#x22;)
+        }
+        break
+    }
+  }
+
+  // if we got a prefix, then prepend it to the path.
+  if (prefix) {
+    this.path = prefix + &#x22;/&#x22; + this.path
+    // console.error(&#x22;%% header got a prefix&#x22;, this.path)
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+, assert = require(&#x22;assert&#x22;).ok
+, space = &#x22; &#x22;.charCodeAt(0)
+, slash = &#x22;/&#x22;.charCodeAt(0)
+, bslash = process.platform === &#x22;win32&#x22; ? &#x22;\\&#x22;.charCodeAt(0) : null
+
+function TarHeader (block) {
+if (!(this instanceof TarHeader)) return new TarHeader(block)
+if (block) this.<span class="apidocCodeKeywordSpan">decode</span>(block)
+}
+
+TarHeader.prototype =
+{ decode : decode
+, encode: encode
+, calcSum: calcSum
+, checkSum: checkSum
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.header.encode" id="apidoc.element.tar.header.encode">
+        function <span class="apidocSignatureSpan">tar.header.</span>encode
+        <span class="apidocSignatureSpan">(obj)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function encode(obj) {
+  if (!obj &#x26;&#x26; !(this instanceof TarHeader)) throw new Error(
+    &#x22;encode must be called on a TarHeader, or supplied an object&#x22;)
+
+  obj = obj || this
+  var block = obj.block = new Buffer(512)
+
+  // if the object has a &#x22;prefix&#x22;, then that&#x27;s actually an extension of
+  // the path field.
+  if (obj.prefix) {
+    // console.error(&#x22;%% header encoding, got a prefix&#x22;, obj.prefix)
+    obj.path = obj.prefix + &#x22;/&#x22; + obj.path
+    // console.error(&#x22;%% header encoding, prefixed path&#x22;, obj.path)
+    obj.prefix = &#x22;&#x22;
+  }
+
+  obj.needExtended = false
+
+  if (obj.mode) {
+    if (typeof obj.mode === &#x22;string&#x22;) obj.mode = parseInt(obj.mode, 8)
+    obj.mode = obj.mode &#x26; 0777
+  }
+
+  for (var f = 0; fields[f] !== null; f ++) {
+    var field = fields[f]
+      , off = fieldOffs[f]
+      , end = fieldEnds[f]
+      , ret
+
+    switch (field) {
+      case &#x22;cksum&#x22;:
+        // special, done below, after all the others
+        break
+
+      case &#x22;prefix&#x22;:
+        // special, this is an extension of the &#x22;path&#x22; field.
+        // console.error(&#x22;%% header encoding, skip prefix later&#x22;)
+        break
+
+      case &#x22;type&#x22;:
+        // convert from long name to a single char.
+        var type = obj.type || &#x22;0&#x22;
+        if (type.length &#x3e; 1) {
+          type = tar.types[obj.type]
+          if (!type) type = &#x22;0&#x22;
+        }
+        writeText(block, off, end, type)
+        break
+
+      case &#x22;path&#x22;:
+        // uses the &#x22;prefix&#x22; field if &#x3e; 100 bytes, but &#x3c;= 255
+        var pathLen = Buffer.byteLength(obj.path)
+          , pathFSize = fieldSize[fields.path]
+          , prefFSize = fieldSize[fields.prefix]
+
+        // paths between 100 and 255 should use the prefix field.
+        // longer than 255
+        if (pathLen &#x3e; pathFSize &#x26;&#x26;
+            pathLen &#x3c;= pathFSize + prefFSize) {
+          // need to find a slash somewhere in the middle so that
+          // path and prefix both fit in their respective fields
+          var searchStart = pathLen - 1 - pathFSize
+            , searchEnd = prefFSize
+            , found = false
+            , pathBuf = new Buffer(obj.path)
+
+          for ( var s = searchStart
+              ; (s &#x3c;= searchEnd)
+              ; s ++ ) {
+            if (pathBuf[s] === slash || pathBuf[s] === bslash) {
+              found = s
+              break
+            }
+          }
+
+          if (found !== false) {
+            prefix = pathBuf.slice(0, found).toString(&#x22;utf8&#x22;)
+            path = pathBuf.slice(found + 1).toString(&#x22;utf8&#x22;)
+
+            ret = writeText(block, off, end, path)
+            off = fieldOffs[fields.prefix]
+            end = fieldEnds[fields.prefix]
+            // console.error(&#x22;%% header writing prefix&#x22;, off, end, prefix)
+            ret = writeText(block, off, end, prefix) || ret
+            break
+          }
+        }
+
+        // paths less than 100 chars don&#x27;t need a prefix
+        // and paths longer than 255 need an extended header and will fail
+        // on old implementations no matter what we do here.
+        // Null out the prefix, and fallthrough to default.
+        // console.error(&#x22;%% header writing no prefix&#x22;)
+        var poff = fieldOffs[fields.prefix]
+          , pend = fieldEnds[fields.prefix]
+        writeText(block, poff, pend, &#x22;&#x22;)
+        // fallthrough
+
+      // all other fields are numeric or text
+      default:
+        ret = numeric[field]
+            ? writeNumeric(block, off, end, obj[field])
+            : writeText(block, off, end, obj[field] || &#x22;&#x22;)
+        break
+    }
+    obj.needExtended = obj.needExtended || ret
+  }
+
+  var off = fieldOffs[fields.cksum]
+    , end = fieldEnds[fields.cksum]
+
+  writeNumeric(block, off, end, calcSum.call(this, block))
+
+  return block
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+}
+
+EntryWriter.prototype._header = function () {
+  // console.error(&#x22;.. ew header&#x22;)
+  if (this._didHeader) return
+  this._didHeader = true
+
+  var headerBlock = TarHeader.<span class="apidocCodeKeywordSpan">encode</span>(this.props)
+
+  if (this.props.needExtended &#x26;&#x26; !this._meta) {
+var me = this
+
+ExtendedHeaderWriter = ExtendedHeaderWriter ||
+  require(&#x22;./extended-header-writer.js&#x22;)
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.header.parseNumeric" id="apidoc.element.tar.header.parseNumeric">
+        function <span class="apidocSignatureSpan">tar.header.</span>parseNumeric
+        <span class="apidocSignatureSpan">(f)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function parseNumeric(f) {
+  if (f[0] &#x26; 0x80) return parse256(f)
+
+  var str = f.toString(&#x22;utf8&#x22;).split(&#x22;\0&#x22;)[0].trim()
+    , res = parseInt(str, 8)
+
+  return isNaN(res) ? null : res
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.tar.header.prototype" id="apidoc.module.tar.header.prototype">module tar.header.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.tar.header.prototype.calcSum" id="apidoc.element.tar.header.prototype.calcSum">
+        function <span class="apidocSignatureSpan">tar.header.prototype.</span>calcSum
+        <span class="apidocSignatureSpan">(block)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function calcSum(block) {
+  block = block || this.block
+  assert(Buffer.isBuffer(block) &#x26;&#x26; block.length === 512)
+
+  if (!block) throw new Error(&#x22;Need block to checksum&#x22;)
+
+  // now figure out what it would be if the cksum was &#x22;        &#x22;
+  var sum = 0
+    , start = fieldOffs[fields.cksum]
+    , end = fieldEnds[fields.cksum]
+
+  for (var i = 0; i &#x3c; fieldOffs[fields.cksum]; i ++) {
+    sum += block[i]
+  }
+
+  for (var i = start; i &#x3c; end; i ++) {
+    sum += space
+  }
+
+  for (var i = end; i &#x3c; 512; i ++) {
+    sum += block[i]
+  }
+
+  return sum
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.header.prototype.checkSum" id="apidoc.element.tar.header.prototype.checkSum">
+        function <span class="apidocSignatureSpan">tar.header.prototype.</span>checkSum
+        <span class="apidocSignatureSpan">(block)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function checkSum(block) {
+  var sum = calcSum.call(this, block)
+  block = block || this.block
+
+  var cksum = block.slice(fieldOffs[fields.cksum], fieldEnds[fields.cksum])
+  cksum = parseNumeric(cksum)
+
+  return cksum === sum
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+}
+
+function decode (block) {
+block = block || this.block
+assert(Buffer.isBuffer(block) &#x26;&#x26; block.length === 512)
+
+this.block = block
+this.cksumValid = this.<span class="apidocCodeKeywordSpan">checkSum</span>()
+
+var prefix = null
+
+// slice off each field.
+for (var f = 0; fields[f] !== null; f ++) {
+  var field = fields[f]
+    , val = block.slice(fieldOffs[f], fieldEnds[f])
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.header.prototype.decode" id="apidoc.element.tar.header.prototype.decode">
+        function <span class="apidocSignatureSpan">tar.header.prototype.</span>decode
+        <span class="apidocSignatureSpan">(block)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function decode(block) {
+  block = block || this.block
+  assert(Buffer.isBuffer(block) &#x26;&#x26; block.length === 512)
+
+  this.block = block
+  this.cksumValid = this.checkSum()
+
+  var prefix = null
+
+  // slice off each field.
+  for (var f = 0; fields[f] !== null; f ++) {
+    var field = fields[f]
+      , val = block.slice(fieldOffs[f], fieldEnds[f])
+
+    switch (field) {
+      case &#x22;ustar&#x22;:
+        // if not ustar, then everything after that is just padding.
+        if (val.toString() !== &#x22;ustar\0&#x22;) {
+          this.ustar = false
+          return
+        } else {
+          // console.error(&#x22;ustar:&#x22;, val, val.toString())
+          this.ustar = val.toString()
+        }
+        break
+
+      // prefix is special, since it might signal the xstar header
+      case &#x22;prefix&#x22;:
+        var atime = parseNumeric(val.slice(131, 131 + 12))
+          , ctime = parseNumeric(val.slice(131 + 12, 131 + 12 + 12))
+        if ((val[130] === 0 || val[130] === space) &#x26;&#x26;
+            typeof atime === &#x22;number&#x22; &#x26;&#x26;
+            typeof ctime === &#x22;number&#x22; &#x26;&#x26;
+            val[131 + 12] === space &#x26;&#x26;
+            val[131 + 12 + 12] === space) {
+          this.atime = atime
+          this.ctime = ctime
+          val = val.slice(0, 130)
+        }
+        prefix = val.toString(&#x22;utf8&#x22;).replace(/\0+$/, &#x22;&#x22;)
+        // console.error(&#x22;%% header reading prefix&#x22;, prefix)
+        break
+
+      // all other fields are null-padding text
+      // or a number.
+      default:
+        if (numeric[field]) {
+          this[field] = parseNumeric(val)
+        } else {
+          this[field] = val.toString(&#x22;utf8&#x22;).replace(/\0+$/, &#x22;&#x22;)
+        }
+        break
+    }
+  }
+
+  // if we got a prefix, then prepend it to the path.
+  if (prefix) {
+    this.path = prefix + &#x22;/&#x22; + this.path
+    // console.error(&#x22;%% header got a prefix&#x22;, this.path)
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+, assert = require(&#x22;assert&#x22;).ok
+, space = &#x22; &#x22;.charCodeAt(0)
+, slash = &#x22;/&#x22;.charCodeAt(0)
+, bslash = process.platform === &#x22;win32&#x22; ? &#x22;\\&#x22;.charCodeAt(0) : null
+
+function TarHeader (block) {
+if (!(this instanceof TarHeader)) return new TarHeader(block)
+if (block) this.<span class="apidocCodeKeywordSpan">decode</span>(block)
+}
+
+TarHeader.prototype =
+{ decode : decode
+, encode: encode
+, calcSum: calcSum
+, checkSum: checkSum
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.tar.header.prototype.encode" id="apidoc.element.tar.header.prototype.encode">
+        function <span class="apidocSignatureSpan">tar.header.prototype.</span>encode
+        <span class="apidocSignatureSpan">(obj)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function encode(obj) {
+  if (!obj &#x26;&#x26; !(this instanceof TarHeader)) throw new Error(
+    &#x22;encode must be called on a TarHeader, or supplied an object&#x22;)
+
+  obj = obj || this
+  var block = obj.block = new Buffer(512)
+
+  // if the object has a &#x22;prefix&#x22;, then that&#x27;s actually an extension of
+  // the path field.
+  if (obj.prefix) {
+    // console.error(&#x22;%% header encoding, got a prefix&#x22;, obj.prefix)
+    obj.path = obj.prefix + &#x22;/&#x22; + obj.path
+    // console.error(&#x22;%% header encoding, prefixed path&#x22;, obj.path)
+    obj.prefix = &#x22;&#x22;
+  }
+
+  obj.needExtended = false
+
+  if (obj.mode) {
+    if (typeof obj.mode === &#x22;string&#x22;) obj.mode = parseInt(obj.mode, 8)
+    obj.mode = obj.mode &#x26; 0777
+  }
+
+  for (var f = 0; fields[f] !== null; f ++) {
+    var field = fields[f]
+      , off = fieldOffs[f]
+      , end = fieldEnds[f]
+      , ret
+
+    switch (field) {
+      case &#x22;cksum&#x22;:
+        // special, done below, after all the others
+        break
+
+      case &#x22;prefix&#x22;:
+        // special, this is an extension of the &#x22;path&#x22; field.
+        // console.error(&#x22;%% header encoding, skip prefix later&#x22;)
+        break
+
+      case &#x22;type&#x22;:
+        // convert from long name to a single char.
+        var type = obj.type || &#x22;0&#x22;
+        if (type.length &#x3e; 1) {
+          type = tar.types[obj.type]
+          if (!type) type = &#x22;0&#x22;
+        }
+        writeText(block, off, end, type)
+        break
+
+      case &#x22;path&#x22;:
+        // uses the &#x22;prefix&#x22; field if &#x3e; 100 bytes, but &#x3c;= 255
+        var pathLen = Buffer.byteLength(obj.path)
+          , pathFSize = fieldSize[fields.path]
+          , prefFSize = fieldSize[fields.prefix]
+
+        // paths between 100 and 255 should use the prefix field.
+        // longer than 255
+        if (pathLen &#x3e; pathFSize &#x26;&#x26;
+            pathLen &#x3c;= pathFSize + prefFSize) {
+          // need to find a slash somewhere in the middle so that
+          // path and prefix both fit in their respective fields
+          var searchStart = pathLen - 1 - pathFSize
+            , searchEnd = prefFSize
+            , found = false
+            , pathBuf = new Buffer(obj.path)
+
+          for ( var s = searchStart
+              ; (s &#x3c;= searchEnd)
+              ; s ++ ) {
+            if (pathBuf[s] === slash || pathBuf[s] === bslash) {
+              found = s
+              break
+            }
+          }
+
+          if (found !== false) {
+            prefix = pathBuf.slice(0, found).toString(&#x22;utf8&#x22;)
+            path = pathBuf.slice(found + 1).toString(&#x22;utf8&#x22;)
+
+            ret = writeText(block, off, end, path)
+            off = fieldOffs[fields.prefix]
+            end = fieldEnds[fields.prefix]
+            // console.error(&#x22;%% header writing prefix&#x22;, off, end, prefix)
+            ret = writeText(block, off, end, prefix) || ret
+            break
+          }
+        }
+
+        // paths less than 100 chars don&#x27;t need a prefix
+        // and paths longer than 255 need an extended header and will fail
+        // on old implementations no matter what we do here.
+        // Null out the prefix, and fallthrough to default.
+        // console.error(&#x22;%% header writing no prefix&#x22;)
+        var poff = fieldOffs[fields.prefix]
+          , pend = fieldEnds[fields.prefix]
+        writeText(block, poff, pend, &#x22;&#x22;)
+        // fallthrough
+
+      // all other fields are numeric or text
+      default:
+        ret = numeric[field]
+            ? writeNumeric(block, off, end, obj[field])
+            : writeText(block, off, end, obj[field] || &#x22;&#x22;)
+        break
+    }
+    obj.needExtended = obj.needExtended || ret
+  }
+
+  var off = fieldOffs[fields.cksum]
+    , end = fieldEnds[fields.cksum]
+
+  writeNumeric(block, off, end, calcSum.call(this, block))
+
+  return block
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+}
+
+EntryWriter.prototype._header = function () {
+  // console.error(&#x22;.. ew header&#x22;)
+  if (this._didHeader) return
+  this._didHeader = true
+
+  var headerBlock = TarHeader.<span class="apidocCodeKeywordSpan">encode</span>(this.props)
+
+  if (this.props.needExtended &#x26;&#x26; !this._meta) {
+var me = this
+
+ExtendedHeaderWriter = ExtendedHeaderWriter ||
+  require(&#x22;./extended-header-writer.js&#x22;)
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
